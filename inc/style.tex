@@ -1,0 +1,31 @@
+% Hier kommt die Präambel hin
+
+% erst werden die Pakete definiert
+\usepackage[ngerman]{babel} % neue Deutsche Rechtschreibung
+\usepackage[utf8]{inputenc} % utf8-encoding
+\usepackage[T1]{fontenc}    % westeuropäisches font-encoding für schonere fonts
+\usepackage[onehalfspacing]{setspace}  % Zeilenabstand auf 1.5 setzen
+\usepackage[hmargin={2.5cm,2.5cm}]{geometry} % Seitenränder wie im Merkblatt vorgeschrieben auf 2,5cm setzen
+
+
+\usepackage{graphicx} % Paket für Einbindung von Bildern
+
+\usepackage[german=guillemets]{csquotes} % sehr schöne Anführungszeichen
+
+%disable before printing -> pressable links will show at the printed page!!! Only used for digital pdf's
+\usepackage[breaklinks=true]{hyperref}
+
+% Optionen fürs Layout
+\KOMAoptions{
+	parskip=full, % kein Abstand zwischen Absätze, nur Einrückungen
+	fontsize=12pt,
+	paper=a4,
+	pagesize=auto,
+	bibliography=nottotoc, % Literaturverzeichnis wird nicht ins Inhaltsverzeichnis aufgenommen
+	bibliography=openstyle, % Art des Literaturverzeichnis
+}
+
+% Überschriften mit Serifen
+\addtokomafont{section}{\rmfamily}
+\addtokomafont{subsection}{\rmfamily}
+\addtokomafont{subsubsection}{\rmfamily}
