@@ -26,7 +26,18 @@
         \item[Chiffrieren] Das verschlüsseln des \emph{Klartextes} zum \emph{Chiffretext}
         \item[Dechiffrieren] Das entschlüsseln des \emph{Chiffretextes} um wieder den \emph{Klartext} zu erhalten
     \end{description}
-    
+
+    \subsection[Ziele]{Ziele der Kryptographie}
+    % TODO  Nach Moderne Verfahren der Kryptographie (natürlich mit cittitle o.ä)
+    % IDEA PIN-Persönliche Identifikationsnummer
+    \subsubsection{Geheimhaltung}
+    Der wohl bekannteste und offensichtlichste Verwendungszweck der Verschlüsselung ist eine Nachricht geheim zu halten. Hierbei wird die zu übertragende Nachricht so entstellt, dass sie für jeden völlig unsinnig erscheint, außer für den beabsichtigten Empfänger, welcher den geeigneten Schlüssel besitzt, er ihm das Dechiffrieren ermöglicht.\autocite{beutelspacher2015}
+    \subsubsection{Authentikation}
+    Bei der Authentikation liegt das Ziel darin, die Echtheit einer Identität oder Nachricht zu überprüfen, da wir uns in der digitalen Welt nicht einfach durch unser Aussehen oder unsere Stimme ausweisen können und auch bei Nachrichten ist nicht zweifelsfrei Festzustellen von wem sie versendet hat und ob sie auf ihrem Weg verändert wurden. Zur \emph{Teilnehmerauthentikation} gehört unter anderem das eingeben der Geheimzahl am Geldautomaten, da nur der Besitzer der EC-Karte auch die dazu gehörige Nummer kennt und so seine Identität dem Geldautomaten nachweisen kann. Hier gilt das Prinzip:
+    \begin{quote}
+        Ich weise meine Identität dadurch nach, dass ich nachweise, etwas zu haben, was kein anderer hat.\autocite{beutelspacher2015}
+    \end{quote}
+    Ähnlich funktioniert es bei der \emph{Nachrichtenauthentikation}: hier verknüpft der Ersteller sein \enquote{Geheimnis} mit dem Dokument um es authentisch zu machen. Im Falle des Bankautomaten, muss allerdings zusätzlich zum Kontoinhaber logischerweise auch der Bankautomat die Geheimnummer kennen. Es gibt aber auch sogenannte \emph{Signaturverfahren}, bei denen dies nicht der Fall ist.
 
 
 \end{document}
