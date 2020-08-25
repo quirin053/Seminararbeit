@@ -28,7 +28,7 @@
     \end{description}
 
     \subsection[Ziele]{Ziele der Kryptographie}
-    % TODO  Nach Moderne Verfahren der Kryptographie (natürlich mit cittitle o.ä)
+    % TODO  Nach Moderne Verfahren der Kryptographie (natürlich mit citetitle o.ä)
     % IDEA PIN-Persönliche Identifikationsnummer
     \subsubsection{Geheimhaltung}
     Der wohl bekannteste und offensichtlichste Verwendungszweck der Verschlüsselung ist eine Nachricht geheim zu halten. Hierbei wird die zu übertragende Nachricht so entstellt, dass sie für jeden völlig unsinnig erscheint, außer für den beabsichtigten Empfänger, welcher den geeigneten Schlüssel besitzt, er ihm das Dechiffrieren ermöglicht.\autocite{beutelspacher2015}
@@ -37,7 +37,9 @@
     \begin{quote}
         Ich weise meine Identität dadurch nach, dass ich nachweise, etwas zu haben, was kein anderer hat.\autocite{beutelspacher2015}
     \end{quote}
-    Ähnlich funktioniert es bei der \emph{Nachrichtenauthentikation}: hier verknüpft der Ersteller sein \enquote{Geheimnis} mit dem Dokument um es authentisch zu machen. Im Falle des Bankautomaten, muss allerdings zusätzlich zum Kontoinhaber logischerweise auch der Bankautomat die Geheimnummer kennen. Es gibt aber auch sogenannte \emph{Signaturverfahren}, bei denen dies nicht der Fall ist.
+    Ähnlich funktioniert es bei der \emph{Nachrichtenauthentikation}: hier verknüpft der Ersteller sein \enquote{Geheimnis} mit dem Dokument um es authentisch zu machen. Im Falle des Bankautomaten, muss allerdings zusätzlich zum Kontoinhaber logischerweise auch der Bankautomat die Geheimnummer kennen. Es gibt aber auch sogenannte \emph{Signaturverfahren}, bei denen dies nicht notwendig ist.
+    \subsubsection{weitere Ziele}
+    Neben den beiden oben genannten Zielen für die die RSA-Verschlüsselung am häufigsten eingesetzt wird, gibt es auch noch weitere Ziele, die zwar weniger prominent sind, jedoch ähnliche Techniken nutzen. Bei dem Zeil der \emph{Anonymität} wird die Identität verborgen, was bei einer digitalen Geschäftsabwicklung mit dem Zahlen mit Bargeld verglichen werden kann, aber auch oft zum Schutz der Privatsphäre eingesetzt wird. Wie die RSA-Verschlüsselung basieren \emph{kryptographische Protokolle} größtenteils auf dem \emph{Public-Key-Verfahren}. Mit einem Protokoll wird hierbei die zum Datenaustausch nötige Abfolge von auszuführenden Schritten bezeichnet. Somit ist es durch vorher festgelegte Protokolle möglich, dass sich eine große Anzahl von Teilnehmern miteinander verschlüsselt verständigen können. Ein \emph{kryptografisches Protokoll} muss sich aber nicht auf den digitalen Nachrichtenaustausch beschränken, sondern auch schon das Bedienen eines Bankautomaten wird als solches bezeichnet.
 
 
 \end{document}
