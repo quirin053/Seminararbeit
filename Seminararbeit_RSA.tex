@@ -2,6 +2,8 @@
 
 \input{./inc/style}
 
+\newcommand{\person}[1]{\textsc{#1}}
+
 \usepackage[style=reading]{biblatex}
 \bibliography{bib/Seminararbeit}
 
@@ -40,6 +42,36 @@
     Ähnlich funktioniert es bei der \emph{Nachrichtenauthentikation}: hier verknüpft der Ersteller sein \enquote{Geheimnis} mit dem Dokument um es authentisch zu machen. Im Falle des Bankautomaten, muss allerdings zusätzlich zum Kontoinhaber logischerweise auch der Bankautomat die Geheimnummer kennen. Es gibt aber auch sogenannte \emph{Signaturverfahren}, bei denen dies nicht notwendig ist.
     \subsubsection{weitere Ziele}
     Neben den beiden oben genannten Zielen für die die RSA-Verschlüsselung am häufigsten eingesetzt wird, gibt es auch noch weitere Ziele, die zwar weniger prominent sind, jedoch ähnliche Techniken nutzen. Bei dem Zeil der \emph{Anonymität} wird die Identität verborgen, was bei einer digitalen Geschäftsabwicklung mit dem Zahlen mit Bargeld verglichen werden kann, aber auch oft zum Schutz der Privatsphäre eingesetzt wird. Wie die RSA-Verschlüsselung basieren \emph{kryptographische Protokolle} größtenteils auf dem \emph{Public-Key-Verfahren}. Mit einem Protokoll wird hierbei die zum Datenaustausch nötige Abfolge von auszuführenden Schritten bezeichnet. Somit ist es durch vorher festgelegte Protokolle möglich, dass sich eine große Anzahl von Teilnehmern miteinander verschlüsselt verständigen können. Ein \emph{kryptografisches Protokoll} muss sich aber nicht auf den digitalen Nachrichtenaustausch beschränken, sondern auch schon das Bedienen eines Bankautomaten wird als solches bezeichnet.
+
+    \subsection{Klassische Chiffren} % FIXME bessere Überschrift
+    Die Verschlüsselung kann auf eine lange Entwicklungsgeschichte zurückblicken, und laut \textcite[28]{ertel2003} werden alle Verfahren, die bis etwa 1950 entwickelt und verwendet wurden als \emph{klassische Chiffren} bezeichnet. Diese Chiffren können in \emph{Transpositionschiffre} und \emph{Substitutionschiffre} unterteilt werden.    % FIXME mehr Zitationen?
+     Bei einer \emph{Transpositionschiffre} wird die Anordnung der Zeichen im Chiffretext gegenüber dem Klartext verändert, die Zeichen an sich aber bleiben dabei gleich. Im Chiffretext einer \emph{Substitutionschiffre} dagegen bleibt die Position des Zeichens erhalten, jedoch wird das Zeichen an sich ersetzt. Diese lässt sich noch weiter \emph{monoalphabetische}, bei der ein Klartext-Zeichen im Chiffretext immer durch das gleiche Zeichen repräsentiert wird und \emph{polyalphabetische}, bei der sich das zugehörige Chiffretext-Zeichen abhängig vom Kontext verändert.
+    \subsubsection{Caesar-Verschlüsselung}
+    Die nach ihrem berühmtesten Benutzer \person{Julius Caesar} benannte Chiffre ist zwar keine besonders sichere, aber zur Veranschaulichung gut geeignet. Diese Chiffre ist eine \emph{monoalphabetische Substitutionschiffre} und kann noch genauer den \emph{Verschiebechiffren} zugeordnet werden. Wie es durch den Namen bereits suggeriert wird, wird der Klartext durch Verschiebung seiner Zeichen chiffriert. Bei der Caesar-Verschlüsselung wird dies erreicht, indem jedes Zeichen mit dem Zeichen ersetzt wird, das an der Stelle im verwendeten Alphabet steht, die sich aus der Position des Klartext-Zeichens im Alphabet, summiert mit dem Schlüssel ergibt. Allgemein kann dies mit folgender Formel beschrieben werden:
+    \begin{equation}
+        z \mapsto (z+k) \bmod n
+    \end{equation}
+    Hierbei steht $z$ für das Klartextzeichen und $k$ für den Schlüssel. Zusätzlich wird durch das Modulo verhindert, dass des Chiffre-Zeichen außerhalb des Alphabets liegt, wobei $n$ die Länge des Alphabets angibt. Bei $k=3$, wie \person{Julius} es verwendete, ergibt sich dann folgende Klartext-Alphabet zu Chiffre-Alphabet Zuordnung:
+    \begin{center}
+        \begin{tabularx}{\textwidth}{r*{26}{C}}
+            Klartext: &a&b&c&d&e&f&g&h&i&j&k&l&m&n&o&p&q&r&s&t&u&v&w&x&y&z\\
+            Chiffretext: &D&E&F&G&H&I&J&K&L&M&N&O&P&Q&R&S&T&U&V&W&X&Y&Z&A&B&C       
+        \end{tabularx}
+    \end{center}
+    Wenn dieses Vorgehen jetzt auf einen Text angewendet wird, entstehen Ergebnisse, die in etwa so aussehen:
+    \begin{center}
+        \begin{tabular}{ccc}
+            seminararbeit & hallo welt & schule \\
+            $\downarrow$ & 	$\downarrow$ & 	$\downarrow$\\
+            VHPLQDUDUEHLW & KDOOR ZHOW & VFKXOH
+        \end{tabular}
+    \end{center}
+    Die Entschlüsselung erfolgt hier mit dem selben Schlüssel, der auch bei der Verschlüsselung verwendet wurde, indem die Buchstaben in entgegengesetzte Richtung verschoben werden. Diese Art der Verschlüsselung ist allerdings sehr unsicher, da sie mehrere Problemstellen aufweist.
+    \begin{description}
+        \item[Die Schlüsselübertragung] Verschlüsselung wird häufig benutzt, wenn damit gerechnet wird, dass die Kommunikation abgehört wird. Da aber um die verschlüsselte Kommunikation herzustellen zuerst der Schlüssel ausgetauscht werden muss, stellt sich hier die Frage, wie das erreicht werden kann, ohne dass der ungewollte Dritte davon Kenntnis nimmt.
+        \item[Schlüsselmöglichkeiten] Es gibt hier nur eine sehr begrenzte Anzahl von Zahlen, die für $k$ eingesetzt werden können, und zwar $n-1$. Theoretisch können auch größere Zahlen eingesetzt werden, allerdings erzeugen sie aufgrund des Modulo keine neuen Chiffretexte. Durch diese begrenzten Variationen ist es möglich den Klartext zu ermitteln, indem alle möglichen Schlüssel durchprobiert werden.
+        \item[Monoalphabetisch] Da es sich um eine \emph{monoalphabetische} Verschlüsselung handelt, kann der Schlüssel ermittelt werden, indem die statistische Verteilung der Buchstaben im Chiffretext mit dem durchschnittlichen Auftreten in der jeweiligen Sprache verglichen wird.
+    \end{description}
 
 
 \end{document}
