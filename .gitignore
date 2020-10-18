@@ -285,3 +285,6 @@ TSWLatexianTemp*
 
 .vscode
 *.code-workspace
+
+#wakatime Datei
+.wakatime-project

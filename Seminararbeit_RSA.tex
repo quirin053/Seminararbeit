@@ -1,4 +1,4 @@
-\documentclass{scrarticle}
+\documentclass{scrarticle} %vielleicht lieber report?
 
 \input{./inc/style}
 
@@ -77,12 +77,29 @@
             VHPLQDUDUEHLW & KDOOR ZHOW & VFKXOH
         \end{tabular}
     \end{center}
-    Die Entschlüsselung erfolgt hier mit dem selben Schlüssel, der auch bei der Verschlüsselung verwendet wurde, indem die Buchstaben in entgegengesetzte Richtung verschoben werden. Diese Art der Verschlüsselung ist allerdings sehr unsicher, da sie mehrere Problemstellen aufweist.
+    Die Entschlüsselung erfolgt hier mit dem selben Schlüssel, der auch bei der Verschlüsselung verwendet wurde, indem die Buchstaben in entgegengesetzte Richtung verschoben werden. Diese Art der Verschlüsselung ist allerdings sehr unsicher, da sie mehrere Problemstellen aufweist:
     \begin{description}
         \item[Die Schlüsselübertragung] Verschlüsselung wird häufig benutzt, wenn damit gerechnet wird, dass die Kommunikation abgehört wird. Da aber um die verschlüsselte Kommunikation herzustellen zuerst der Schlüssel ausgetauscht werden muss, stellt sich hier die Frage, wie das erreicht werden kann, ohne dass der ungewollte Dritte davon Kenntnis nimmt.
         \item[Schlüsselmöglichkeiten] Es gibt hier nur eine sehr begrenzte Anzahl von Zahlen, die für $k$ eingesetzt werden können, und zwar $n-1$. Theoretisch können auch größere Zahlen eingesetzt werden, allerdings erzeugen sie aufgrund des Modulo keine neuen Chiffretexte. Durch diese begrenzten Variationen ist es möglich den Klartext zu ermitteln, indem alle möglichen Schlüssel durchprobiert werden.
         \item[Monoalphabetisch] Da es sich um eine \emph{monoalphabetische} Verschlüsselung handelt, kann der Schlüssel ermittelt werden, indem die statistische Verteilung der Buchstaben im Chiffretext mit dem durchschnittlichen Auftreten in der jeweiligen Sprache verglichen wird.
     \end{description}
+
+    \subsection{Symmetrie}  %FIXME Ziatation
+        Eine weiter wichtige Unterteilung der Verschlüsselungsformen ist die \emph{Symmetrie}. (vgl. \cite{ertel2003}[18]) wird unterschieden, ob die Entschlüsselung mit dem gleichen Schlüssel wie die Verschlüsselung erfolgt, dies wird als \emph{symmetrisch} bezeichnet, oder ob für die Entschlüsselung ein separater Schlüssel verwendet werden muss (\emph{asymmetrisch}). Wenn nun $E$ die Verschlüsselung (encryption), $D$ die Entschlüsselung (decryption), $M$ den Klartext, $C$ den Chiffretext (ciphertext) und $K$ den Schlüssel (key) bezeichnet, gilt für einen \emph{symmetrischen Algorithmus}:
+        \begin{align}
+            E_K(M) &= C\\
+            D_K(C) &= M\\
+            D_K\left(E_K(M)\right) &= M
+        \end{align}
+        Für einen \emph{asymmetrischen Algorithmus} gilt nahezu identisches, mit dem Unterschied, dass für die Verschlüsselung der Schlüssel $K_1$ und für die Entschlüsselung $K_2$ verwendet wird:    %FIXME Seitenumbruch
+        \begin{align}
+            E_{K_1}(M) &= C\\
+            D_{K_2}(C) &= M\\
+            D_{K_2}\left(E_{K_1}(M)\right) &= M
+        \end{align}
+        %TODO Injektivität? Ertel 18
+
+
 
     \newpage
     \printbibliography
