@@ -85,7 +85,7 @@
     \end{description}
 
     \subsection{Symmetrie}  %FIXME Ziatation
-        Eine weiter wichtige Unterteilung der Verschlüsselungsformen ist die \emph{Symmetrie}. (vgl. \cite{ertel2003}[18]) wird unterschieden, ob die Entschlüsselung mit dem gleichen Schlüssel wie die Verschlüsselung erfolgt, dies wird als \emph{symmetrisch} bezeichnet, oder ob für die Entschlüsselung ein separater Schlüssel verwendet werden muss (\emph{asymmetrisch}). Wenn nun $E$ die Verschlüsselung (encryption), $D$ die Entschlüsselung (decryption), $M$ den Klartext, $C$ den Chiffretext (ciphertext) und $K$ den Schlüssel (key) bezeichnet, gilt für einen \emph{symmetrischen Algorithmus}:
+        Eine weiter wichtige Unterteilung der Verschlüsselungsformen ist die \emph{Symmetrie}. (vgl. \cite{ertel2003}[18]) Hier wird unterschieden, ob die Entschlüsselung mit dem gleichen Schlüssel wie die Verschlüsselung erfolgt, dies wird als \emph{symmetrisch} bezeichnet, oder ob für die Entschlüsselung ein separater Schlüssel verwendet werden muss (\emph{asymmetrisch}). Wenn nun $E$ die Verschlüsselung (encryption), $D$ die Entschlüsselung (decryption), $M$ den Klartext, $C$ den Chiffretext (ciphertext) und $K$ den Schlüssel (key) bezeichnet, gilt für einen \emph{symmetrischen Algorithmus}:
         \begin{align}
             E_K(M) &= C\\
             D_K(C) &= M\\
@@ -93,13 +93,39 @@
         \end{align}
         Für einen \emph{asymmetrischen Algorithmus} gilt nahezu identisches, mit dem Unterschied, dass für die Verschlüsselung der Schlüssel $K_1$ und für die Entschlüsselung $K_2$ verwendet wird:    %FIXME Seitenumbruch
         \begin{align}
-            E_{K_1}(M) &= C\\
-            D_{K_2}(C) &= M\\
-            D_{K_2}\left(E_{K_1}(M)\right) &= M
+            E_{K_1}(M) &= C \label{eq:funf} \\
+            D_{K_2}(C) &= M \label{eq:sechs}    \\
+            D_{K_2}\left(E_{K_1}(M)\right) &= M     \label{eq:sieben}
         \end{align}
         %TODO Injektivität? Ertel 18
 
+        \section{RSA-Verschlüsselung}
+        \subsection[Public-Key-Kryptosysteme]{Das Public-Key-Verfahren}
+        Die Grundlage der RSA-Verschlüsselung bildet die Idee der \emph{Public-Key-Kryptosysteme}.
 
+        \begin{quote}
+            [Diese] wurden 1976 von von \emph{W. Diffie} und \emph{M. Hellman} eingeführt. Jeder Benutzer eines solchen Systems hat einen öffentlichen und einen privaten Schlüssel. Damit besitzt jeder Benutzer \emph{A} eine \emph{öffentliche} Chiffriertransformation $E_A$ und eine \emph{private} Dechiffriertransformation $D_A$.\footcite[67]{watjen2008}
+        \end{quote} %FIXME anführungszeichen in Blockzitaten?
+        Durch diese Form der \emph{asymmetrischen} Verschlüsselung wird das Problem der Schlüsselübertragung behoben, da der zur Verschlüsselung der Nachricht notwendige Schlüssel öffentlich zugänglich ist, die Nachricht jedoch nur mit dem geheimen privaten Schlüssel wieder lesbar gemacht werden kann. Zusätzlich ermöglicht sie durch das Wegfallen des gegenseitigen Schlüsselaustausches auch die verschlüsselte Kommunikation mit jedem beliebigen Partner, ohne die moderner Nachrichtenaustausch durch \enquote{E-Mails} oder \enquote{Instant-Messenger} undenkbar wären.\footcite[Vgl.][21]{ertel2003} Ähnlich zum \emph{asymmetrischen Algorithmus} gilt hier:
+
+        \begin{align}
+            E_{P_A}(M) &= C \\
+            D_{S_A}(C) &= M \\
+            D_{S_A}\left(E_{P_A}(M)\right) &= M
+        \end{align}
+
+        Wobei $P_A$ für den öffentlichen Schlüssel (public key) des Teilnehmers $A$ und $S_A$ für den privaten (secret key) steht.\footcite[Vgl.][21f.]{ertel2003}\\
+        Beispielhaft wäre damit der Ablauf einer Nachrichtenübertrag folgender:
+        \begin{quote}
+            Alice ($A$) möchte an Bob ($B$) eine private Nachricht $M$ schicken. Alice kennt Bobs[\footnote{\enquote{\enquote*{Alice} und \enquote*{Bob} als Kommunikationspartner sind Bestandteil der kryptographischen Fachsprache} \cite[21]{ertel2003}}] öffentlichen Schlüssel und damit $E_B$. Alice bildet den Chiffretext $C = E_B(M)$ und sendet ihn Bob. Nur Bob kennt die Chechiffriertransformation $D_B$, und nur er kann damit den Text durch
+            \begin{equation*}
+                D_B(C) = D_B(E_B(M)) = M
+            \end{equation*}
+            entschlüsseln.\footcite[68]{watjen2008}
+        \end{quote}
+        \centering
+        \input{pkflow.tex}\\
+        \emph{Veranschaulichung des Public-Key-Verfahrens\footcite[67]{watjen2008}}
 
     \newpage
     \printbibliography

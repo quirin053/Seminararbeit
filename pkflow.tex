@@ -1,22 +1,15 @@
-\documentclass{scrartcl}
-\input{./inc/style}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows, positioning, automata}
+\begin{tikzpicture}[thick, auto]
+    \node (input){$M$};
+    \node[state, right=of input](encrypt){$E_B$};
+    \node[above=of encrypt]{öffentlich};
+    \node[below=of encrypt]{Alice};
+    \node[state, accepting, right=3cm of encrypt](decrypt){$D_B$};
+    \node[above=of decrypt]{privat};
+    \node[below=of decrypt]{Bob};
+    \node [right=of decrypt](output){$M$};
 
-\begin{document}
-    \begin{tikzpicture}[thick, auto]
-        \node (input){$M$};
-        \node[state, right=of input](encrypt){$E_B$};
-        \node[above=of encrypt]{öffentlich};
-        \node[below=of encrypt]{Alice};
-        \node[state, accepting, right=3cm of encrypt](decrypt){$D_B$};
-        \node[above=of decrypt]{privat};
-        \node[below=of decrypt]{Bob};
-        \node [right=of decrypt](output){$M$};
-
-        \path[->]
-            (encrypt) edge node {$C = E_B(M)$} (decrypt)
-            (input) edge (encrypt)
-            (decrypt) edge (output);
-    \end{tikzpicture}
-\end{document}
+    \path[->]
+        (encrypt) edge node {$C = E_B(M)$} (decrypt)
+        (input) edge (encrypt)
+        (decrypt) edge (output);
+\end{tikzpicture}
