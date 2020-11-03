@@ -133,9 +133,12 @@
     \subsection{Entwicklung des RSA-Algorithmus}
         Das bis heute wichtigste Public-Key-Kryptosystem\footcite[Vgl.][26]{pieprzyk2010topics} \enquote{wurde 1978 von \emph{R. \textbf{R}ivest},\\ \emph{A. \textbf{S}hamir} und \emph{L. \textbf{A}dleman} erfunden, als sie zu zeigen versuchten, dass Public-Key-Kryptographie unmöglich sei.}\footcite[77]{beutelspacher2015} Dabei war \emph{Rivest} für die Entwicklung des Algorithmus und \emph{Shamir} für die Überprüfung auf Schwachstellen zuständig, während \emph{Adelman} auf beiden Seiten mitwirkte.\footcite[77]{ertel2003} Sie waren jedoch nicht die ersten, denn \enquote{Ende 1997 [wurde bekannt], dass \emph{Clifford Cocks} von den britischen Government Communications Headquarters (GCHQ) bereits 1975 dieselbe Idee hatte, sie aber strenger Geheimhaltung unterlag.}\footcite[71]{watjen2008}%FIXME Zeilenumbruch
     
-        \newpage
-        \printbibliography
-        \newpage
-        \include{./content/Schlusserklaerung}
+    \subsection{Schlüsselerzeugung}
+        Um die bei einem \emph{asymmetrischen Verschlüsselungsverfahren} nötigen beiden Schlüssel zu erzeugen müssen zuerst zwei Primzahlen $p$ und $q$ erzeugt werden.(Vgl. \cite[278]{dankmeier2006}) Aus diesen wird dann das Produkt $n=p\cdot q$, den \emph{Modul}, gebildet. Für die Funktionalität des Verfahrens spielt die größe der verwendeten Primzahlen keine Rolle, allerdings sinkt mit steigender Größe die Gefahr des \enquote{Aufbrechens} durch einen Unbefugten, da die Sicherheit der RSA-Verschlüsselung auf dem \emph{Faktorisierungsproblem} beruht. Dies ist \enquote{das bisher ungelöste Problem der schnellen Zerlegung großer Zahlen in ihre Primfaktoren, die Aufgabe hat eine exponentielle Komplexität.}\footcite[279]{dankmeier2006} Dadurch ist es bei den heute verwendten 100- bis 350-stelligen mit aktuellen Methoden und Rechenleistung nicht möglich aus $n$ die zugrundeliegenden Primzahlen $p$ und $q$ zu berechnen. 
+
+    \newpage
+    \printbibliography
+    \newpage
+    \include{./content/Schlusserklaerung}
 
 \end{document}
