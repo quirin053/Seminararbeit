@@ -142,7 +142,7 @@
                 \Phi(n)= |\{a\in \left[ 1, n-1 \right] | \ggt(n, a)=1\}|
             \end{equation}
             \enquote{Da alle Primzahlen $p$ nur durch 1 und sich selbst teilbar sind, sind sie sicher zu den Zahlen 1 bis $p-1$ teilerfremd, daher ist $\Phi(p) = p-1$.}\footcite{steinfeld}
-            Da $n$ das Produkt zweier verschiedener Primzahlen und somit teilerfremder natürlicher Zahlen ist, gilt die \emph{Multiplikativität}\footcite{steinfeld}:
+            Da $n$ das Produkt zweier verschiedener Primzahlen und somit teilerfremder natürlicher Zahlen ist, gilt die \emph{Multiplikativität}\footcite[Vgl.][]{steinfeld}:
             \begin{equation}
                 \Phi(n) = \Phi(pq) = \Phi(p)\cdot\Phi(q)
             \end{equation}
@@ -150,6 +150,15 @@
             \begin{equation}
                 \Phi(n) = (p-1)\cdot(q-1)
             \end{equation}
+        \subsubsection{Das modulare Inverse}
+            \enquote{Des weiteren [wird] eine zu $\Phi(n)$ teilerfremde Zufallszahl $e$ [gewählt] und [...] hierzu die \emph{modulare inverse} Zahl $d$ bezüglich $\Phi(n)$ [berechnet]. Für $d$ gilt:}\footcite[279]{beutelspacher2015}
+            \begin{equation}
+                d\cdot e\mod{\Phi(n)} = 1
+            \end{equation}
+            \enquote{$d$ kann berechnet werden mit dem erweiterten Euklidischen Algorithmus}\footcite[77]{ertel2003}
+
+        \paragraph{Der erweiterte Euklidische Algorithmus}
+            Lorem ipsum
 
     \newpage
     \printbibliography
