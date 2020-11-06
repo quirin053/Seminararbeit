@@ -183,11 +183,23 @@
             In Abbildung \ref{fig:encrypt} wurde der Ablauf einer Verschlüsselung mit dem Programm \textbf{Cryptool 2} veranschaulicht. Aus Gründen der Übersichtlichkeit wurde hier anstelle der einzelnen Buchstaben der gesamte Text in eine Zahl umgewandelt und die Schlüsselgenerierung wurde dem Programm überlassen.
             % TODO Programm richtig zitieren
             \begin{figure}
-                \includegraphics[width=\linewidth]{content/cryptool_encrypt_1.png}
+                \includegraphics[width=\linewidth]{content/cryptool_encrypt_e1.png}
                 \caption{Veranschaulichung des Verschlüsselungprozesses}
                 \label{fig:encrypt}
             \end{figure}
             % TODO Abbildungsverzeichnis
+
+            Um Bobs Nachricht lesen zu können, muss sie den Chiffretext mit der Dechiffrierfunktion \ref{eq:decrytion} entschlüsseln und wieder zurück in Buchstaben konvertieren.\footcite[77]{ertel2003}
+            \begin{equation}
+                D(C) = C^{d}\mod{n} \label{eq:decrytion}
+            \end{equation}
+            \begin{figure}
+                \includegraphics[width=\linewidth]{content/cryptool_decrypt_e1.png}
+                \caption{Veranschaulichung des Entschlüsselungprozesses}
+                \label{fig:decrypt}
+            \end{figure}
+            %TODO noch was dazu schreiben?
+            %TODO Bilder noch besser anordnen?
 
     %TODO Beispiel
     %TODO Algorithmus in Terminologie einbinden
