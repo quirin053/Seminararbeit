@@ -32,7 +32,7 @@
 
     \subsubsection{Terminologie}
     Aus diesem Wissenschaftsbereich stammen noch mehrere Begriffe ab, die im folgenden von Bedeutung sein werden:
-    % Begriffsklärungen
+    % Begriffsklärungen %TODO Algorithmus?
     \begin{description}
         \item[Chiffre] Geheime Methode des Schreibens, also eine Form des Verschlüsselns
         \item[Klartext] Der unverschlüsselte Text
@@ -151,7 +151,7 @@
                 \Phi(n) = (p-1)\cdot(q-1)
             \end{equation}
         \subsubsection{Das modulare Inverse} %TODO #6 noch ausführlicher (wat40 & dank44)
-            \enquote{Des weiteren [wird] eine zu $\Phi(n)$ teilerfremde Zufallszahl $e$ [$1<e<\Phi(n)$]\footcite[71]{watjen2008} [gewählt] und [...] hierzu die \emph{modulare inverse} Zahl $d$ bezüglich $\Phi(n)$ [berechnet]. Für $d$ gilt:}\footcite[279]{beutelspacher2015}
+            \enquote{Des weiteren [wird] eine zu $\Phi(n)$ teilerfremde Zufallszahl $e$ [($1<e<\Phi(n)$)]\footcite[71]{watjen2008} [gewählt] und [...] hierzu die \emph{modulare inverse} Zahl $d$ bezüglich $\Phi(n)$ [berechnet]. Für $d$ gilt:}\footcite[279]{beutelspacher2015}
             \begin{equation}
                 d\cdot e\mod{\Phi(n)} = 1
             \end{equation}
@@ -162,9 +162,16 @@
             Lorem ipsum %muss noch was rein, rekursion und so weiter
         % was bringt das überhaupt
         \subsubsection{Die Schlüssel}
+            Mit diesen berechneten Zahlen können nun die Schlüssel erstellt werden(Vgl. \cite[77]{ertel2003}):
+            \begin{description}
+                \item[Der öffentliche Schlüssel ($P$)] besteht aus dem Paar $P=(e, n)$ und wird allen Personen, von denen der Besitzer Informationen erhalten will, zugänglich gemacht. Hier wird auch erkenntlich, weshalb es so wichtig ist, dass $n$ nicht leicht in seine Primfaktoren zerlegt werden kann, denn wenn es einem Angreifer gelingen sollte diese ausfindig zu machen könnte er damit den \emph{privaten Schlüssel} berechnen und alle (abgefangenen) Nachrichten zu entschlüsseln.
+                \item[Der geheime Schlüssel ($S$)] wetzt sich aus $S=(d, n)$ zusammen und sollte nur dem Besitzer bekannt sein. 
+            \end{description}
+            Da die Schlüsselerzeugung meist von einer Schlüsselvergabestelle, wie z.B. dem Anbieter Sofortnachrichtendienstes, sollte dieser nach Berechnung der Schlüssel die Primzahlen $p$ und $q$, sowie das Ergebnis der zugehörigen Eulerfunktion $\Phi(n)$ löschen, damit auch im Falle einer Kompromittierung der Server dessen die Privatsphäre der Nutzer geschützt ist.\footcite[279]{dankmeier2006} %CHECK Grammatik "Server dessen" oder Bezug auf Vergabestelle?
 
     \subsection{Ver-Entschlüsselung}
     %TODO Beispiel
+    %TODO Algorithmus in Terminologie einbinden
 
     \subsection{Signatur}
 
