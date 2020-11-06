@@ -32,7 +32,7 @@
 
     \subsubsection{Terminologie}
     Aus diesem Wissenschaftsbereich stammen noch mehrere Begriffe ab, die im folgenden von Bedeutung sein werden:
-    % Begriffsklärungen %TODO Algorithmus?
+    % Begriffsklärungen %TODO Algorithmus? %TODO Buchstabenabkürzungen hinzufügen
     \begin{description}
         \item[Chiffre] Geheime Methode des Schreibens, also eine Form des Verschlüsselns
         \item[Klartext] Der unverschlüsselte Text
@@ -86,7 +86,7 @@
     \end{description}
 
     \subsection{Symmetrie}  %FIXME Ziatation
-        Eine weitere wichtige Unterteilung der Verschlüsselungsformen ist die \emph{Symmetrie}. (vgl. \cite{ertel2003}[18]) Hier wird unterschieden, ob die Entschlüsselung mit dem gleichen Schlüssel wie die Verschlüsselung erfolgt, dies wird als \emph{symmetrisch} bezeichnet, oder ob für die Entschlüsselung ein separater Schlüssel verwendet werden muss (\emph{asymmetrisch}). Wenn nun $E$ die Verschlüsselung (encryption), $D$ die Entschlüsselung (decryption), $M$ den Klartext, $C$ den Chiffretext (ciphertext) und $K$ den Schlüssel (key) bezeichnet, gilt für einen \emph{symmetrischen Algorithmus}:
+        Eine weitere wichtige Unterteilung der Verschlüsselungsformen ist die \emph{Symmetrie}. (vgl. \cite{ertel2003}[18]) Hier wird unterschieden, ob die Entschlüsselung mit dem gleichen Schlüssel wie die Verschlüsselung erfolgt, dies wird als \emph{symmetrisch} bezeichnet, oder ob für die Entschlüsselung ein separater Schlüssel verwendet werden muss (\emph{asymmetrisch}). Wenn nun $E$ die Verschlüsselung (encryption), $D$ die Entschlüsselung (decryption), $M$ den Klartext, $C$ den Chiffretext (ciphertext) und $K$ den Schlüssel (key) bezeichnet, gilt für einen \emph{symmetrischen Algorithmus}: %FIXME wenn in Terminologie erwähnt, hier die Buchstaben Raus
         \begin{align}
             E_K(M) &= C\\
             D_K(C) &= M\\
@@ -125,7 +125,7 @@
             entschlüsseln.\footcite[68]{watjen2008}
         \end{quote}
         \begin{center}
-            \input{./content/pkflow.tex}\\
+            \input{./content/pkflow.tex}\\ %FIXME Abbildungsverzeichnis?
             \emph{Veranschaulichung des Public-Key-Verfahrens\footcite[67]{watjen2008}}\\            
         \end{center}
         Um die Geheimhaltung zu gewährleisten muss das eingesetzte Verfahren so konzipiert sein, dass von dem öffentlichen Schlüssel $P$ keine Rückschlüsse auf den privaten Schlüssel $S$ gezogen werden können.\footcite[49]{beutelspacher2015} %FIXME Seitenumbruch %IDEA Authentikation schon hier?
@@ -167,9 +167,28 @@
                 \item[Der öffentliche Schlüssel ($P$)] besteht aus dem Paar $P=(e, n)$ und wird allen Personen, von denen der Besitzer Informationen erhalten will, zugänglich gemacht. Hier wird auch erkenntlich, weshalb es so wichtig ist, dass $n$ nicht leicht in seine Primfaktoren zerlegt werden kann, denn wenn es einem Angreifer gelingen sollte diese ausfindig zu machen könnte er damit den \emph{privaten Schlüssel} berechnen und alle (abgefangenen) Nachrichten zu entschlüsseln.
                 \item[Der geheime Schlüssel ($S$)] wetzt sich aus $S=(d, n)$ zusammen und sollte nur dem Besitzer bekannt sein. 
             \end{description}
-            Da die Schlüsselerzeugung meist von einer Schlüsselvergabestelle, wie z.B. dem Anbieter Sofortnachrichtendienstes, sollte dieser nach Berechnung der Schlüssel die Primzahlen $p$ und $q$, sowie das Ergebnis der zugehörigen Eulerfunktion $\Phi(n)$ löschen, damit auch im Falle einer Kompromittierung der Server dessen die Privatsphäre der Nutzer geschützt ist.\footcite[279]{dankmeier2006} %CHECK Grammatik "Server dessen" oder Bezug auf Vergabestelle?
+            Da die Schlüsselerzeugung meist von einer Schlüsselvergabestelle, wie z.B. dem Anbieter Sofortnachrichtendienstes, sollte dieser nach Berechnung der Schlüssel die Primzahlen $p$ und $q$, sowie das Ergebnis der zugehörigen Eulerfunktion $\Phi(n)$ löschen, damit auch im Falle einer Kompromittierung der Server dessen die Privatsphäre der Nutzer geschützt ist.\footcite[279]{dankmeier2006} %CHECK Grammatik "Server dessen" oder Bezug auf Vergabestelle? %TODO Ablaufschema: Cryptool oder tikz
 
-    \subsection{Ver-Entschlüsselung}
+    \subsection{Ver- und Entschlüsselungs Algorithmus}
+            Möchte Bob nun eine chiffrierte Nachricht an Alice verschicken, muss er folgendermaßen vorgehen (Vgl. \cite[71]{watjen2008}):
+            \begin{enumerate}
+                \item Bob beschafft sich den öffentlichen Schlüssel $P$ von Alice
+                \item Da die Buchstaben seiner Nachricht nicht direkt verschlüsselt werden, muss er sie in Zahlen übersetzen, die in $\mathbb{Z}_n$ enthalten sein müssen. %CHECK was ist Zn
+                \item
+                Mit der Chiffrierfunktion \ref{eq:encryption}\footcite[77]{ertel2003} verschlüsselt Bob alle Buchstaben und übermittelt den ermittelten Geheimtext an Alice.
+                \begin{equation}
+                    E(M) = M^{e}\mod{n} \label{eq:encryption}
+                \end{equation}
+            \end{enumerate}
+            In Abbildung \ref{fig:encrypt} wurde der Ablauf einer Verschlüsselung mit dem Programm \textbf{Cryptool 2} veranschaulicht. Aus Gründen der Übersichtlichkeit wurde hier anstelle der einzelnen Buchstaben der gesamte Text in eine Zahl umgewandelt und die Schlüsselgenerierung wurde dem Programm überlassen.
+            % TODO Programm richtig zitieren
+            \begin{figure}
+                \includegraphics[width=\linewidth]{content/cryptool_encrypt_1.png}
+                \caption{Veranschaulichung des Verschlüsselungprozesses}
+                \label{fig:encrypt}
+            \end{figure}
+            % TODO Abbildungsverzeichnis
+
     %TODO Beispiel
     %TODO Algorithmus in Terminologie einbinden
 
