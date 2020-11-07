@@ -150,10 +150,10 @@
             \begin{equation}
                 \Phi(n) = (p-1)\cdot(q-1)
             \end{equation}
-        \subsubsection{Das modulare Inverse} %TODO #6 noch ausführlicher (wat40 & dank44)
+        \subsubsection{Das modulare Inverse} %TODO #6 noch ausführlicher (wat40 & dank44) & ind. Zitat
             \enquote{Des weiteren [wird] eine zu $\Phi(n)$ teilerfremde Zufallszahl $e$ [($1<e<\Phi(n)$)]\footcite[71]{watjen2008} [gewählt] und [...] hierzu die \emph{modulare inverse} Zahl $d$ bezüglich $\Phi(n)$ [berechnet]. Für $d$ gilt:}\footcite[279]{beutelspacher2015}
             \begin{equation}
-                d\cdot e\mod{\Phi(n)} = 1
+                d\cdot e\mod{\Phi(n)} = 1 \label{eq:modinv}
             \end{equation}
             Da $e$ und $\Phi(n)$ teilerfremd sind, gibt es hierfür eine eindeutige Lösung\footcite[Vgl.][77, 164]{ertel2003}. Dieses
             \enquote{$d$ kann berechnet werden mit dem \emph{erweiterten Euklidischen Algorithmus}.}\footcite[77]{ertel2003}
@@ -177,7 +177,7 @@
                 \item
                 Mit der Chiffrierfunktion \ref{eq:encryption}\footcite[77]{ertel2003} verschlüsselt Bob alle Buchstaben und übermittelt den ermittelten Geheimtext an Alice.
                 \begin{equation}
-                    E(M) = M^{e}\mod{n} \label{eq:encryption}
+                    C = E(M) = M^{e}\mod{n} \label{eq:encryption}
                 \end{equation}
             \end{enumerate}
             In Abbildung \ref{fig:encrypt} wurde der Ablauf einer Verschlüsselung mit dem Programm \textbf{Cryptool 2} veranschaulicht. Aus Gründen der Übersichtlichkeit wurde hier anstelle der einzelnen Buchstaben der gesamte Text in eine Zahl umgewandelt und die Schlüsselgenerierung wurde dem Programm überlassen.
@@ -191,7 +191,7 @@
 
             Um Bobs Nachricht lesen zu können, muss sie den Chiffretext mit der Dechiffrierfunktion \ref{eq:decrytion} entschlüsseln und wieder zurück in Buchstaben konvertieren.\footcite[77]{ertel2003}
             \begin{equation}
-                D(C) = C^{d}\mod{n} \label{eq:decrytion}
+                M = D(C) = C^{d}\mod{n} \label{eq:decrytion}
             \end{equation}
             \begin{figure}
                 \includegraphics[width=\linewidth]{content/cryptool_decrypt_e1.png}
@@ -206,8 +206,9 @@
     %TODO Algorithmus in Terminologie einbinden
     %FIXME beutelspacher Zitate Seiten überprüfen
 
-    \subsection{Digitale Signatur}
-        Neben dem Verschlüsseln von Nachrichten wird das RSA-Verfahren auch häufig dazu verwendet um digitale Nachrichten zu signieren. Bei einer \emph{digitalen Signatur}, oft auch \emph{elektronische Unterschrift} \enquote{unterschreibt} ein Teilnehmer $A$ seine Nachricht oder Datei indem er eine nur ihm bekannten \emph{Signaturfunktion} $s_A$ auf diese anwendet (Vgl. \cite[40-43]{beutelspacher2015}). Neben der geheimen Signaturfunktion besitzt jeder Teilnehmer auch noch eine \emph{Verifikationsfunktion} $v_A$, welche er öffentlich zugänglich macht oder zusätzlich mit einer signierten und einer unsignierten Version der Nachricht mitversendet. Mit dieser kann der Empfänger die signierte Nachricht entschlüsseln und falls sich der dechiffrierte Text mit dem unsignierten deckt, ist die Identität des Absenders bewiesen.
+    \subsection{Digitale Signatur} %FIXME Kürzen
+        Neben dem Verschlüsseln von Nachrichten wird das RSA-Verfahren auch häufig dazu verwendet um digitale Nachrichten zu signieren. Bei einer \emph{digitalen Signatur}, oft auch \emph{elektronische Unterschrift} \enquote{unterschreibt} ein Teilnehmer $A$ seine Nachricht oder Datei indem er eine nur ihm bekannten \emph{Signaturfunktion} $s_A$ auf diese anwendet (Vgl. \cite[40-43]{beutelspacher2015}). Neben der geheimen Signaturfunktion besitzt jeder Teilnehmer auch noch eine \emph{Verifikationsfunktion} $v_A$, welche er öffentlich zugänglich macht oder zusätzlich mit einer signierten und einer unsignierten Version der Nachricht mitversendet. Mit dieser kann der Empfänger die signierte Nachricht entschlüsseln und falls sich der dechiffrierte Text mit dem unsignierten deckt, ist die Identität des Absenders bewiesen, da nur der Besitzer des privaten Schlüssel den Text so verschlüsseln konnte, dass der Chiffretext sich nach Anwendung der öffentlichen Verifikationsfunktion dem Klartext entspricht\footcite[Vgl.][68]{watjen2008}.
+        % TODO Ablaufschema
         \begin{align}
             SIG &= s_A(M) \\
             v_A(SIG) &= M
@@ -221,8 +222,43 @@
             M = v_A(SIG) = SIG^{e}\mod{n}
         \end{equation}
         Da es aber unpraktikabel ist immer gesamte Dateien zu signieren, da es zu lange dauert und in zu großen Signaturdateien resultiert, wird in der realen Anwendung meist eine \emph{Hashfunktion} verwendet, welche einen kleinen \enquote{Fingerabdruck} der Datei erstellt und nur dieser wird signiert. Beim Verifizieren wird ebenfalls nur das Ergebnis der auf die Datei angewendeten Hashfunktion mit der Signatur durch die Verifikationsfunktion verglichen.
+        % TODO Geheimhaltung und Signatur in einem
 
-    \subsection{Beweis}
+    \subsection{Mathematischer Beweis des Verfahrens}
+        Um den RSA-Algorithmus mathematisch zu beweisen, muss bestätigt werden, dass die Funktionen E \ref{eq:encryption} und D \ref{eq:decrytion} invers zueinander sind und für alle $M\in\mathbb{Z}_n$ gilt:\footcite[Vgl.][78]{ertel2003}
+        \begin{equation}
+            D(E(M)) = E(D(M)) = M
+        \end{equation}
+        \enquote{Nunächst gilt nach Rechenregeln für die MOD-Funktion:}\footcite[282]{dankmeier2006}
+        \begin{equation}
+            \left(M^{e}\mod{n}\right)^{d}\mod{n} = K^{ed}\mod{n} \label{eq:ked}
+        \end{equation}
+        (Eine kurze Erklärung der verwendten Rechenregeln lässt sich hier finden: \cite{modpot})
+        Da das modulare Inverse $d$ in \ref{eq:modinv} als $ed\mod{\Phi(n)}=1$ bestimmt wurde, gilt nach Einführung des ganzzahligen Faktors $k$:\footcite[Vgl.][72]{watjen2008}
+        \begin{equation}
+            e\cdot d = k\cdot \Phi(n)+1
+        \end{equation}
+        Zusammen mit \ref{eq:ked} resultiert das in folgender Gleichung, die es zu beweisen gilt:\footcite[Vgl.][282]{dankmeier2006}
+        \begin{equation}
+           M = M^{k\Phi(n)+1}\mod{n} = M\cdot M^{k\Phi(n)}\mod{n}
+        \end{equation}
+        Sind nun $M$ und $n$ teilerfremd, kann der \emph{Satz von Fermat-Euler} benutzt werden, um den Beweis zu erbringen. Nach \cite[390]{bronstejn2016} lautet dieser auf den vorliegenden Fall bezogen:
+        \begin{equation}
+            M^{\Phi(n)} \mod{n} = 1
+        \end{equation}
+        Mit
+        \begin{equation}
+            M^{k \cdot \Phi(n)} \mod{n} = \left(M^{\Phi(n)\mod{n}}\right)^{k} \mod{n} = 1^{k}\mod{n} = 1
+        \end{equation}
+        und
+        \begin{align}
+            M\cdot M^{k\Phi(n)}\mod{n} &= \left(M\mod{n}\cdot M^{k\Phi(n)}\mod{n}\right)\mod{n}\\
+             &= M\mod{n}\mod{n} = M \notag
+        \end{align}
+        da $M < n$ und somit $M\mod{n}$ wieder $M$ ergibt,
+        ist $M = M^{k\Phi(n)+1}\mod{n}$, was zu beweisen war, bewiesen.\\
+        Für den Randfall, dass $M$ nicht teilerfremd zu $n$ ist, sondern ein Vielfaches von $q$ oder $p$ ist, ist ebenfalls ein Beweis vorhanden, diesen hier aufzuführen würde jedoch den Rahmen sprengen, es soll jedoch gesagt werden, dass er teilweise auf dem eben beschriebenen Vorgehen basiert.
+
 
     \subsection{praktische Anwendungen}
 
@@ -236,3 +272,5 @@
     \include{./content/Schlusserklaerung}
 
 \end{document}
+% TODO Phi klein schreiben du Vollidiot
+%FIXME Abstand von mod verkleinern?
