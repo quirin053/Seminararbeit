@@ -1,4 +1,4 @@
-\documentclass{scrarticle} %vielleicht lieber report?
+\documentclass{scrarticle}
 
 \input{./inc/style}
 
@@ -55,7 +55,7 @@
     \subsubsection{weitere Ziele}
     Neben den beiden oben genannten Zielen für die die RSA-Verschlüsselung am häufigsten eingesetzt wird, gibt es auch noch weitere Ziele, die zwar weniger prominent sind, jedoch ähnliche Techniken nutzen. Bei dem Zeil der \emph{Anonymität} wird die Identität verborgen, was bei einer digitalen Geschäftsabwicklung mit dem Zahlen mit Bargeld verglichen werden kann, aber auch oft zum Schutz der Privatsphäre eingesetzt wird. Wie die RSA-Verschlüsselung basieren \emph{kryptographische Protokolle} größtenteils auf dem \emph{Public-Key-Verfahren}. Mit einem Protokoll wird hierbei die zum Datenaustausch nötige Abfolge von auszuführenden Schritten bezeichnet. Somit ist es durch vorher festgelegte Protokolle möglich, dass sich eine große Anzahl von Teilnehmern miteinander verschlüsselt verständigen können. Ein \emph{kryptografisches Protokoll} muss sich aber nicht auf den digitalen Nachrichtenaustausch beschränken, sondern auch schon das Bedienen eines Bankautomaten wird als solches bezeichnet.
 
-    \subsection{Klassische Chiffren} % FIXME bessere Überschrift
+    \subsection{Klassische Chiffren}
     Die Verschlüsselung kann auf eine lange Entwicklungsgeschichte zurückblicken, und laut \textcite[28]{ertel2003} werden alle Verfahren, die bis etwa 1950 entwickelt und verwendet wurden als \emph{klassische Chiffren} bezeichnet. Diese Chiffren können in \emph{Transpositionschiffre} und \emph{Substitutionschiffre} unterteilt werden.    % FIXME mehr Zitationen?
      Bei einer \emph{Transpositionschiffre} wird die Anordnung der Zeichen im Chiffretext gegenüber dem Klartext verändert, die Zeichen an sich aber bleiben dabei gleich. Im Chiffretext einer \emph{Substitutionschiffre} dagegen bleibt die Position des Zeichens erhalten, jedoch wird das Zeichen an sich ersetzt. Diese lässt sich noch weiter \emph{monoalphabetische}, bei der ein Klartext-Zeichen im Chiffretext immer durch das gleiche Zeichen repräsentiert wird und \emph{polyalphabetische}, bei der sich das zugehörige Chiffretext-Zeichen abhängig vom Kontext verändert.
     \subsubsection{Caesar-Verschlüsselung}
@@ -198,13 +198,13 @@
                 \item[Der öffentliche Schlüssel ($P$)] besteht aus dem Paar $P=(e, n)$ und wird allen Personen, von denen der Besitzer Informationen erhalten will, zugänglich gemacht. Hier wird auch erkenntlich, weshalb es so wichtig ist, dass $n$ nicht leicht in seine Primfaktoren zerlegt werden kann, denn wenn es einem Angreifer gelingen sollte diese ausfindig zu machen könnte er damit den \emph{privaten Schlüssel} berechnen und alle (abgefangenen) Nachrichten zu entschlüsseln.
                 \item[Der geheime Schlüssel ($S$)] wetzt sich aus $S=(d, n)$ zusammen und sollte nur dem Besitzer bekannt sein. 
             \end{description}
-            Da die Schlüsselerzeugung meist von einer Schlüsselvergabestelle, wie z.B. dem Anbieter Sofortnachrichtendienstes, sollte dieser nach Berechnung der Schlüssel die Primzahlen $p$ und $q$, sowie das Ergebnis der zugehörigen Eulerfunktion $\varphi(n)$ löschen, damit auch im Falle einer Kompromittierung der Server dessen die Privatsphäre der Nutzer geschützt ist.\footcite[279]{dankmeier2006} %CHECK Grammatik "Server dessen" oder Bezug auf Vergabestelle? %TODO Ablaufschema: Cryptool oder tikz
+            Da die Schlüsselerzeugung meist von einer Schlüsselvergabestelle, wie z.B. dem Anbieter Sofortnachrichtendienstes, sollte dieser nach Berechnung der Schlüssel die Primzahlen $p$ und $q$, sowie das Ergebnis der zugehörigen Eulerfunktion $\varphi(n)$ löschen, damit auch im Falle einer Kompromittierung der Server dessen die Privatsphäre der Nutzer geschützt ist.\footcite[279]{dankmeier2006} %TODO Ablaufschema: Cryptool oder tikz
 
     \section{Ver- und Entschlüsselungs Algorithmus}
             Möchte Bob nun eine chiffrierte Nachricht an Alice verschicken, muss er folgendermaßen vorgehen (vgl. \cite[71]{watjen2008}):
             \begin{enumerate}
                 \item Bob beschafft sich den öffentlichen Schlüssel $P$ von Alice
-                \item Da die Buchstaben seiner Nachricht nicht direkt verschlüsselt werden, muss er sie in Zahlen übersetzen, die in $\mathbb{Z}_n$ enthalten sein müssen. %CHECK was ist Zn
+                \item Da die Buchstaben seiner Nachricht nicht direkt verschlüsselt werden, muss er sie in Zahlen übersetzen, die in $\mathbb{Z}_n$ enthalten sein müssen. ($\mathbb{Z}_n$=\{1,...,n-1\})\footcite[161]{ertel2003}
                 \item
                 Mit der Chiffrierfunktion \ref{eq:encryption}\footcite[77]{ertel2003} verschlüsselt Bob alle Buchstaben und übermittelt den ermittelten Geheimtext an Alice.
                 \begin{equation}
