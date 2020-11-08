@@ -1,0 +1,44 @@
+\tikzset{
+  op/.style={
+    rectangle,
+    fill=orange!10,
+    draw=orange
+  },
+  io/.style={
+    trapezium,
+    trapezium left angle=70,
+    trapezium right angle=110,
+    fill=magenta!10,
+    draw=magenta
+  },
+  cn/.style={
+    diamond,
+    aspect=2,
+    inner sep=2pt,
+    fill=red!10,
+    draw=red
+  }
+}
+
+\begin{tikzpicture}[thick, auto]
+    \node[io](input){$a,b$};
+    \node[op, below=of input](zuweis){$\begin{aligned}
+        x&\leftarrow a\\
+        y&\leftarrow b
+    \end{aligned}$};
+    \node[cn, below=of zuweis](mod){$r = x\mod{y}$};
+    \node[op, right=2.5cm of mod](umweis){$\begin{aligned}
+        x&\leftarrow y\\
+        y&\leftarrow r
+    \end{aligned}$};
+    \node[io, below=1.5cm of mod](aus){$\ggt(a,b)=y$};
+
+    \path[->]
+        (input) edge (zuweis)
+        (mod) edge node [below]{$r\neq 0$}(umweis)
+        (mod) edge node [right]{$r=0$} (aus);
+
+    \draw [->] (zuweis) -- node (zum) {} (mod);
+    \draw [->] (umweis) |- (zum);
+    
+\end{tikzpicture}

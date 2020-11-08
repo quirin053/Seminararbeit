@@ -288,3 +288,6 @@ TSWLatexianTemp*
 
 #wakatime Datei
 .wakatime-project
+
+#pandoc plaintext export
+output.txt

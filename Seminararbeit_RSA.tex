@@ -125,7 +125,7 @@
             entschlüsseln.\footcite[68]{watjen2008}
         \end{quote}
         \begin{center}
-            \input{./content/pkflow.tex}\\ %FIXME Abbildungsverzeichnis?
+            \input{./content/pkflow.tex}\\
             \emph{Veranschaulichung des Public-Key-Verfahrens\footcite[67]{watjen2008}}\\            
         \end{center}
         Um die Geheimhaltung zu gewährleisten muss das eingesetzte Verfahren so konzipiert sein, dass von dem öffentlichen Schlüssel $P$ keine Rückschlüsse auf den privaten Schlüssel $S$ gezogen werden können.\footcite[49]{beutelspacher2015} %FIXME Seitenumbruch %IDEA Authentikation schon hier?
@@ -158,9 +158,14 @@
             Da $e$ und $\Phi(n)$ teilerfremd sind, gibt es hierfür eine eindeutige Lösung\footcite[Vgl.][77, 164]{ertel2003}. Dieses
             \enquote{$d$ kann berechnet werden mit dem \emph{erweiterten Euklidischen Algorithmus}.}\footcite[77]{ertel2003}
 
-        \paragraph{Der erweiterte Euklidische Algorithmus}
-            Lorem ipsum %muss noch was rein, rekursion und so weiter
-        % was bringt das überhaupt
+        \paragraph{Der erweiterte Euklidische Algorithmus} %FIXME Section draus machen
+               Der erweiterte Euklidische Algorithmus baut auf dem \enquote{normalen} Euklidischen Algorithmus auf, mit dem der größte gemeinsame Teiler zweier Zahlen $a$ und $b$ auf.\footcite[Vgl.][]{erweA} Dabei wird $a$ durch $b$ dividiert und darauffolgend mit dem Rest (Modulo) wiederum der Divisor dividiert. Dies wird solange wiederholt bis der Rest gleich $0$ ist.\footcite[Vgl.][]{matbib-eka}
+               \begin{center}
+                \input{./content/EukAlg.tex}\\
+                \emph{Ablaufschema des Euklidischen Algorithmus}\footcite{zum2020}\\
+                   
+               \end{center}
+
         \subsubsection{Die Schlüssel}
             Mit diesen berechneten Zahlen können nun die Schlüssel erstellt werden(Vgl. \cite[77]{ertel2003}):
             \begin{description}
@@ -263,7 +268,7 @@
         Die größte Vorteil des RSA-Verfahrens ist wie bei Public-Key-Kryptosystemen allgemein die Einfachheit der Schlüsselverteilung, welche es für viele Anwendungen überhaupt erst brauchbar macht (Vgl.\cite[285]{dankmeier2006}). Ein weiterer positiver Punkt im Bezug auf die Schlüssel ist, dass hier im Gegensatz zu manch anderen Verfahren diese für jeden Teilnehmer nur einmalig generiert werden müssen, was insbesondere in Anbetracht der relativ hohen Rechenintensität der Primzahlgenerierung wichtig ist. Auch die Möglichkeit der Signatur mit den gleichen wie zur Verschlüsselung genutzten Schlüsseln und Funktionen trägt zur großen Anerkennung bei. Wie bereits erwähnt basiert die Sicherheit auf dem \emph{Faktorisierungsproblem}. Da dieses Problem jedoch mit neuen Algorithmen und schnelleren Rechnern immer schneller zu lösen ist, sinkt die Sicherheit. Dieses Problem kann jedoch einfach mit längeren Schlüsseln gelöst werden, was allerdings zu höheren Ansprüchen von Rechenleistung bei der Benutzung mit sich bringt.\footcite[Vgl.][]{zum2020} So veröffentlichte \emph{Rivest} 1977 einen mit einer 129 Dezimalstellen langen Zahl $n$ verschlüsselte Text, für den er annahm, dass es 40 Quadrillionen Jahre benötige um diesen zu entschlüsseln. Bereits 1994 wurde er innerhalb von 8 Monaten geknackt.\footcite[Vgl.][73]{watjen2008} Zur Sicherheit durch dass \emph{Faktorisierungsproblem} gilt auch noch anzumerken, dass \enquote{Experten \emph{glauben}, dass es kein effizientes [...] Ver-
         fahren zur Faktorisierung gibt. Bewiesen ist dies jedoch \emph{nicht}.}\footcite[80]{ertel2003}
 
-        \subsection{praktische Anwendungen}
+    \subsection{praktische Anwendungen}
         
     \section{Schluss/Ausblick}
 
