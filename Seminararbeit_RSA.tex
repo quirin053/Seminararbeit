@@ -155,16 +155,44 @@
             \begin{equation}
                 d\cdot e\mod{\Phi(n)} = 1 \label{eq:modinv}
             \end{equation}
-            Da $e$ und $\Phi(n)$ teilerfremd sind, gibt es hierfür eine eindeutige Lösung\footcite[Vgl.][77, 164]{ertel2003}. Dieses
+            Da $e$ und $\Phi(n)$ teilerfremd sind, gibt es hierfür eine Lösung\footcite[Vgl.][77, 164]{ertel2003}. Dieses
             \enquote{$d$ kann berechnet werden mit dem \emph{erweiterten Euklidischen Algorithmus}.}\footcite[77]{ertel2003}
 
         \paragraph{Der erweiterte Euklidische Algorithmus} %FIXME Section draus machen
-               Der erweiterte Euklidische Algorithmus baut auf dem \enquote{normalen} Euklidischen Algorithmus auf, mit dem der größte gemeinsame Teiler zweier Zahlen $a$ und $b$ auf.\footcite[Vgl.][]{erweA} Dabei wird $a$ durch $b$ dividiert und darauffolgend mit dem Rest (Modulo) wiederum der Divisor dividiert. Dies wird solange wiederholt bis der Rest gleich $0$ ist.\footcite[Vgl.][]{matbib-eka}
-               \begin{center}
-                \input{./content/EukAlg.tex}\\
-                \emph{Ablaufschema des Euklidischen Algorithmus}\footcite{zum2020}\\
-                   
-               \end{center}
+            Der erweiterte Euklidische Algorithmus baut auf dem \enquote{normalen} Euklidischen Algorithmus auf, mit dem der größte gemeinsame Teiler zweier Zahlen $a$ und $b$ auf.\footcite[Vgl.][]{erweA} Dabei wird $a$ durch $b$ dividiert und darauffolgend mit dem Rest (Modulo) wiederum der Divisor dividiert. Dies wird solange wiederholt bis der Rest gleich $0$ ist.\footcite[Vgl.][]{matbib-eka}
+            \begin{center}
+            \input{./content/EukAlg.tex}\\
+            \emph{Ablaufschema des Euklidischen Algorithmus}\footcite{zum2020}\\                   
+            \end{center}
+            Nach vollständigem Iterieren dieses Ablaufs ergeben sich neben dem ggT auch ein Reihe von Gleichungen (Abbildung \ref{fig:euklid}) (Vgl. \cite{erweA}). Um damit auf das modulare Inverse zu finden müssen diese nun, bei der letzten beginnend, nach dem jeweiligen Rest aufgelöst und ineinander eingesetzt werden. Mit $a=5$ und $b=48$ würde das folgende Rechnungen ergeben (Abbildung \ref{fig:erweuklid}):\\
+            \begin{figure}[h!]
+                \centering
+                \includegraphics{content/euklid.png}
+                \caption{Schritt 1: euklidischer Algorithmus\protect\footnotemark}
+                \label{fig:euklid}
+            \end{figure}
+            \footnotetext{\cite{erweA}}
+            \begin{figure}[h!]
+                \centering
+                \includegraphics{content/erweuklid.png}
+                \caption{Schritt 2\protect\footnotemark}
+                \label{fig:erweuklid}
+            \end{figure}
+            \footnotetext{\cite{erweA}}
+            \begin{equation}
+                2\cdot48-19\cdot5=1
+            \end{equation}
+            lässt sich mit $\mod$ auch anders schreiben: %FIXME Seitenumbruch
+            \begin{equation}
+                -19\cdot5\mod{48}=1
+            \end{equation}
+            was der Definition \ref{eq:modinv} schon sehr ähnlich sieht. Wir streben allerdings eine positive Zahl an und da wir aufgrund des $\mod{48}$ beliebig oft $48$ addieren dürfen, ohne dass sich die rechte Seite ändert, ergibt sich nach fünfmaliger Addition:
+            \begin{equation}
+                29\cdot5\mod{48} = 1
+            \end{equation}
+            Womit das Modulare Inverse als $29$ berechnet wäre.
+
+
 
         \subsubsection{Die Schlüssel}
             Mit diesen berechneten Zahlen können nun die Schlüssel erstellt werden(Vgl. \cite[77]{ertel2003}):
