@@ -258,12 +258,13 @@
         da $M < n$ und somit $M\mod{n}$ wieder $M$ ergibt,
         ist $M = M^{k\Phi(n)+1}\mod{n}$, was zu beweisen war, bewiesen.\\
         Für den Randfall, dass $M$ nicht teilerfremd zu $n$ ist, sondern ein Vielfaches von $q$ oder $p$ ist, ist ebenfalls ein Beweis vorhanden, diesen hier aufzuführen würde jedoch den Rahmen sprengen, es soll jedoch gesagt werden, dass er teilweise auf dem eben beschriebenen Vorgehen basiert.
+        
+    \subsection{Bewertung}
+        Die größte Vorteil des RSA-Verfahrens ist wie bei Public-Key-Kryptosystemen allgemein die Einfachheit der Schlüsselverteilung, welche es für viele Anwendungen überhaupt erst brauchbar macht (Vgl.\cite[285]{dankmeier2006}). Ein weiterer positiver Punkt im Bezug auf die Schlüssel ist, dass hier im Gegensatz zu manch anderen Verfahren diese für jeden Teilnehmer nur einmalig generiert werden müssen, was insbesondere in Anbetracht der relativ hohen Rechenintensität der Primzahlgenerierung wichtig ist. Auch die Möglichkeit der Signatur mit den gleichen wie zur Verschlüsselung genutzten Schlüsseln und Funktionen trägt zur großen Anerkennung bei. Wie bereits erwähnt basiert die Sicherheit auf dem \emph{Faktorisierungsproblem}. Da dieses Problem jedoch mit neuen Algorithmen und schnelleren Rechnern immer schneller zu lösen ist, sinkt die Sicherheit. Dieses Problem kann jedoch einfach mit längeren Schlüsseln gelöst werden, was allerdings zu höheren Ansprüchen von Rechenleistung bei der Benutzung mit sich bringt.\footcite[Vgl.][]{zum2020} So veröffentlichte \emph{Rivest} 1977 einen mit einer 129 Dezimalstellen langen Zahl $n$ verschlüsselte Text, für den er annahm, dass es 40 Quadrillionen Jahre benötige um diesen zu entschlüsseln. Bereits 1994 wurde er innerhalb von 8 Monaten geknackt.\footcite[Vgl.][73]{watjen2008} Zur Sicherheit durch dass \emph{Faktorisierungsproblem} gilt auch noch anzumerken, dass \enquote{Experten \emph{glauben}, dass es kein effizientes [...] Ver-
+        fahren zur Faktorisierung gibt. Bewiesen ist dies jedoch \emph{nicht}.}\footcite[80]{ertel2003}
 
-
-    \subsection{praktische Anwendungen}
-
-    \subsection{Vor-  Nachteile}
-
+        \subsection{praktische Anwendungen}
+        
     \section{Schluss/Ausblick}
 
     \newpage
