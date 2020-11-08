@@ -213,8 +213,7 @@
                     C = E(M) = M^{e}\mod{n} \label{eq:encryption}
                 \end{equation}
             \end{enumerate}
-            In Abbildung \ref{fig:encrypt} wurde der Ablauf einer Verschlüsselung mit dem Programm \textbf{Cryptool 2} veranschaulicht. Aus Gründen der Übersichtlichkeit wurde hier anstelle der einzelnen Buchstaben der gesamte Text in eine Zahl umgewandelt und die Schlüsselgenerierung wurde dem Programm überlassen.
-            % TODO Programm richtig zitieren
+            In Abbildung \ref{fig:encrypt} wurde der Ablauf einer Verschlüsselung mit dem Programm \textbf{Cryptool 2} (www.cryptool.org) veranschaulicht. Aus Gründen der Übersichtlichkeit wurde hier anstelle der einzelnen Buchstaben der gesamte Text in eine Zahl umgewandelt und die Schlüsselgenerierung wurde dem Programm überlassen.
             \begin{figure}
                 \includegraphics[width=\linewidth]{content/cryptool_encrypt_e1.png}
                 \caption{Veranschaulichung des Verschlüsselungprozesses\protect\footnotemark}
@@ -297,8 +296,11 @@
         fahren zur Faktorisierung gibt. Bewiesen ist dies jedoch \emph{nicht}.}\footcite[80]{ertel2003}
 
     \subsection{praktische Anwendungen}
+        Die meisten von uns kommen mit der RSA-Verschlüsselung mehrmals tagtäglich in Berührung, meist ohne es überhaupt zu bemerken. Denn sobald man eine Seite im Internet, deren URL mit \enquote{https} beginnt, nutzt man sie (Vgl. \cite{httpsblog}). Das \emph{HyperText Transfer Protocol (http)} existiert seit dem Beginn des Internets 1990, die Daten wurden hierbei jedoch als Klartext übertragen, weshalb 1994 das \emph{Hypertext Transfer Protocol Secure (https)} eingeführt wurde. Einem genauen Beobachter ist vielleicht schonmal am linken Rand der Adressleiste seines Browsers ein Symbol aufgefallen, welches je nach Verwendung von \emph{http} oder \emph{https} ein Schloss oder ein Warndreieck darstellt, denn nur bei \emph{https} sind die übertragenen Daten verschlüsselt. Verwendet wird hierfür das \emph{Transport Layer Security (TLS)} Protokoll, einer Mischung aus RSA und einem symmetrischen Verschlüsselungsverfahren, AES. Dabei erzeugt der Browser einen \emph{Session-Key} und übermittelt diesen, mit dem \emph{Public-Key} des Webservers verschlüsselt an ebendiesen. Sobald der Server den \emph{Session-Key} erhalten hat, findet der Datenaustausch durch \emph{AES} verschlüsselt statt, da dies wesentlich weniger Rechenleistung benötigt als wenn alles mit \emph{RSA} verschlüsselt werden würde.
+        Für Nutzer, die sich selbst etwas stärker damit befassen wollen können sie mit Software wie \textbf{PGP} (Pretty-Good-Privacy) ihre eigenen Dateien oder auch mit dem kostenlosen Ableger \textbf{OpenPGP} ihre EMails verschlüsseln und signieren.\footcite[Vgl.][]{zotero-48}
         
-    \section{Schluss/Ausblick}
+    \section{Ausblick}
+        
 
     \newpage
     \printbibliography
