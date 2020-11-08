@@ -98,10 +98,8 @@
             D_{K_2}(C) &= M \label{eq:sechs}    \\
             D_{K_2}\left(E_{K_1}(M)\right) &= M     \label{eq:sieben}
         \end{align}
-        %TODO Injektivität? Ertel 18
 
-        \section{RSA-Verschlüsselung} %FIXME nicht als eigener Unterpunkt?
-        \subsection[Public-Key-Kryptosysteme]{Das Public-Key-Verfahren}
+        \section[Public-Key-Kryptosysteme]{Das Public-Key-Verfahren}
         Die Grundlage der RSA-Verschlüsselung bildet die Idee der \emph{Public-Key-Kryptosysteme}.
 
         \begin{quote}
@@ -130,13 +128,13 @@
         \end{center}
         Um die Geheimhaltung zu gewährleisten muss das eingesetzte Verfahren so konzipiert sein, dass von dem öffentlichen Schlüssel $P$ keine Rückschlüsse auf den privaten Schlüssel $S$ gezogen werden können.\footcite[49]{beutelspacher2015} %FIXME Seitenumbruch %IDEA Authentikation schon hier?
     
-    \subsection{Entwicklung des RSA-Algorithmus}
+    \section{Entwicklung des RSA-Algorithmus}
         Das bis heute wichtigste Public-Key-Kryptosystem\footcite[Vgl.][26]{pieprzyk2010topics} \enquote{wurde 1978 von \emph{R. \textbf{R}ivest},\\ \emph{A. \textbf{S}hamir} und \emph{L. \textbf{A}dleman} erfunden, als sie zu zeigen versuchten, dass Public-Key-Kryptographie unmöglich sei.}\footcite[77]{beutelspacher2015} Dabei war \emph{Rivest} für die Entwicklung des Algorithmus und \emph{Shamir} für die Überprüfung auf Schwachstellen zuständig, während \emph{Adelman} auf beiden Seiten mitwirkte.\footcite[77]{ertel2003} Sie waren jedoch nicht die ersten, denn \enquote{Ende 1997 [wurde bekannt], dass \emph{Clifford Cocks} von den britischen Government Communications Headquarters (GCHQ) bereits 1975 dieselbe Idee hatte, sie aber strenger Geheimhaltung unterlag.}\footcite[71]{watjen2008}%FIXME Zeilenumbruch
     
-    \subsection{Schlüsselerzeugung}
+    \section{Schlüsselerzeugung}
         Um die bei einem \emph{asymmetrischen Verschlüsselungsverfahren} nötigen beiden Schlüssel zu erzeugen müssen zuerst zwei unterschiedliche Primzahlen $p$ und $q$ erzeugt werden.(Vgl. \cite[278]{dankmeier2006}) Aus diesen wird dann das Produkt $n=p\cdot q$, den \emph{Modul}, gebildet. Für die Funktionalität des Verfahrens spielt die größe der verwendeten Primzahlen keine Rolle, allerdings sinkt mit steigender Größe die Gefahr des \enquote{Aufbrechens} durch einen Unbefugten, da die Sicherheit der RSA-Verschlüsselung auf dem \emph{Faktorisierungsproblem} beruht. Dies ist \enquote{das bisher ungelöste Problem der schnellen Zerlegung großer Zahlen in ihre Primfaktoren, die Aufgabe hat eine exponentielle Komplexität.}\footcite[279]{dankmeier2006} Dadurch ist es bei den heute verwendten 100- bis 350-stelligen mit aktuellen Methoden und Rechenleistung nicht möglich aus $n$ die zugrundeliegenden Primzahlen $p$ und $q$ zu berechnen. %TODO möglichkeiten um große Primzahlen zu erstellen im nachfolgenden Kapitel, warum überhaupt Primzahlen?
         Zusätzlich zu $n$ muss auch noch die \emph{Eulersche Phi-Funktion} von $n$ gebildet werden.
-        \subsubsection{Eulersche Phi-Funktion}
+        \subsection{Eulersche Phi-Funktion}
             Die Eulersche $\varphi$-Funktion $\varphi(n)$ bezeichnet die Menge der zu $n$ \emph{teilerfremden} Zahlen $a$ von $1$ bis $n-1$.\footcite[Vgl.][111]{swoboda2008kryptographie}
             \begin{equation}
                 \varphi(n)= |\{a\in \left[ 1, n-1 \right] | \ggt(n, a)=1\}|
@@ -150,7 +148,7 @@
             \begin{equation}
                 \varphi(n) = (p-1)\cdot(q-1)
             \end{equation}
-        \subsubsection{Das modulare Inverse} %TODO #6 noch ausführlicher (wat40 & dank44) & ind. Zitat
+        \subsection{Das modulare Inverse} %TODO #6 noch ausführlicher (wat40 & dank44) & ind. Zitat
             \enquote{Des weiteren [wird] eine zu $\varphi(n)$ teilerfremde Zufallszahl $e$ [($1<e<\varphi(n)$)]\footcite[71]{watjen2008} [gewählt] und [...] hierzu die \emph{modulare inverse} Zahl $d$ bezüglich $\varphi(n)$ [berechnet]. Für $d$ gilt:}\footcite[279]{beutelspacher2015}
             \begin{equation}
                 d\cdot e\mod{\varphi(n)} = 1 \label{eq:modinv}
@@ -158,7 +156,7 @@
             Da $e$ und $\varphi(n)$ teilerfremd sind, gibt es hierfür eine Lösung\footcite[Vgl.][77, 164]{ertel2003}. Dieses
             \enquote{$d$ kann berechnet werden mit dem \emph{erweiterten Euklidischen Algorithmus}.}\footcite[77]{ertel2003}
 
-        \paragraph{Der erweiterte Euklidische Algorithmus} %FIXME Section draus machen
+        \subsubsection{Der erweiterte Euklidische Algorithmus}
             Der erweiterte Euklidische Algorithmus baut auf dem \enquote{normalen} Euklidischen Algorithmus auf, mit dem der größte gemeinsame Teiler zweier Zahlen $a$ und $b$ auf.\footcite[Vgl.][]{erweA} Dabei wird $a$ durch $b$ dividiert und darauffolgend mit dem Rest (Modulo) wiederum der Divisor dividiert. Dies wird solange wiederholt bis der Rest gleich $0$ ist.\footcite[Vgl.][]{matbib-eka}
             \begin{center}
             \input{./content/EukAlg.tex}\\
@@ -194,7 +192,7 @@
 
 
 
-        \subsubsection{Die Schlüssel}
+        \subsection{Die Schlüssel}
             Mit diesen berechneten Zahlen können nun die Schlüssel erstellt werden(Vgl. \cite[77]{ertel2003}):
             \begin{description}
                 \item[Der öffentliche Schlüssel ($P$)] besteht aus dem Paar $P=(e, n)$ und wird allen Personen, von denen der Besitzer Informationen erhalten will, zugänglich gemacht. Hier wird auch erkenntlich, weshalb es so wichtig ist, dass $n$ nicht leicht in seine Primfaktoren zerlegt werden kann, denn wenn es einem Angreifer gelingen sollte diese ausfindig zu machen könnte er damit den \emph{privaten Schlüssel} berechnen und alle (abgefangenen) Nachrichten zu entschlüsseln.
@@ -202,7 +200,7 @@
             \end{description}
             Da die Schlüsselerzeugung meist von einer Schlüsselvergabestelle, wie z.B. dem Anbieter Sofortnachrichtendienstes, sollte dieser nach Berechnung der Schlüssel die Primzahlen $p$ und $q$, sowie das Ergebnis der zugehörigen Eulerfunktion $\varphi(n)$ löschen, damit auch im Falle einer Kompromittierung der Server dessen die Privatsphäre der Nutzer geschützt ist.\footcite[279]{dankmeier2006} %CHECK Grammatik "Server dessen" oder Bezug auf Vergabestelle? %TODO Ablaufschema: Cryptool oder tikz
 
-    \subsection{Ver- und Entschlüsselungs Algorithmus}
+    \section{Ver- und Entschlüsselungs Algorithmus}
             Möchte Bob nun eine chiffrierte Nachricht an Alice verschicken, muss er folgendermaßen vorgehen (Vgl. \cite[71]{watjen2008}):
             \begin{enumerate}
                 \item Bob beschafft sich den öffentlichen Schlüssel $P$ von Alice
@@ -238,7 +236,7 @@
     %TODO Algorithmus in Terminologie einbinden
     %FIXME beutelspacher Zitate Seiten überprüfen
 
-    \subsection{Digitale Signatur} %FIXME Kürzen
+    \section{Digitale Signatur} %FIXME Kürzen
         Neben dem Verschlüsseln von Nachrichten wird das RSA-Verfahren auch häufig dazu verwendet um digitale Nachrichten zu signieren. Bei einer \emph{digitalen Signatur}, oft auch \emph{elektronische Unterschrift} \enquote{unterschreibt} ein Teilnehmer $A$ seine Nachricht oder Datei indem er eine nur ihm bekannten \emph{Signaturfunktion} $s_A$ auf diese anwendet (Vgl. \cite[40-43]{beutelspacher2015}). Neben der geheimen Signaturfunktion besitzt jeder Teilnehmer auch noch eine \emph{Verifikationsfunktion} $v_A$, welche er öffentlich zugänglich macht oder zusätzlich mit einer signierten und einer unsignierten Version der Nachricht mitversendet. Mit dieser kann der Empfänger die signierte Nachricht entschlüsseln und falls sich der dechiffrierte Text mit dem unsignierten deckt, ist die Identität des Absenders bewiesen, da nur der Besitzer des privaten Schlüssel den Text so verschlüsseln konnte, dass der Chiffretext sich nach Anwendung der öffentlichen Verifikationsfunktion dem Klartext entspricht\footcite[Vgl.][68]{watjen2008}.
         % TODO Ablaufschema
         \begin{align}
@@ -256,7 +254,7 @@
         Da es aber unpraktikabel ist immer gesamte Dateien zu signieren, da es zu lange dauert und in zu großen Signaturdateien resultiert, wird in der realen Anwendung meist eine \emph{Hashfunktion} verwendet, welche einen kleinen \enquote{Fingerabdruck} der Datei erstellt und nur dieser wird signiert. Beim Verifizieren wird ebenfalls nur das Ergebnis der auf die Datei angewendeten Hashfunktion mit der Signatur durch die Verifikationsfunktion verglichen.
         % TODO Geheimhaltung und Signatur in einem
 
-    \subsection{Mathematischer Beweis des Verfahrens}
+    \section{Mathematischer Beweis des Verfahrens}
         Um den RSA-Algorithmus mathematisch zu beweisen, muss bestätigt werden, dass die Funktionen E \ref{eq:encryption} und D \ref{eq:decrytion} invers zueinander sind und für alle $M\in\mathbb{Z}_n$ gilt:\footcite[Vgl.][78]{ertel2003}
         \begin{equation}
             D(E(M)) = E(D(M)) = M
@@ -291,11 +289,11 @@
         ist $M = M^{k\varphi(n)+1}\mod{n}$, was zu beweisen war, bewiesen.\\
         Für den Randfall, dass $M$ nicht teilerfremd zu $n$ ist, sondern ein Vielfaches von $q$ oder $p$ ist, ist ebenfalls ein Beweis vorhanden, diesen hier aufzuführen würde jedoch den Rahmen sprengen, es soll jedoch gesagt werden, dass er teilweise auf dem eben beschriebenen Vorgehen basiert.
         
-    \subsection{Bewertung} \label{sec:bewertung}
+    \section{Bewertung} \label{sec:bewertung}
         Die größte Vorteil des RSA-Verfahrens ist wie bei Public-Key-Kryptosystemen allgemein die Einfachheit der Schlüsselverteilung, welche es für viele Anwendungen überhaupt erst brauchbar macht (Vgl.\cite[285]{dankmeier2006}). Ein weiterer positiver Punkt im Bezug auf die Schlüssel ist, dass hier im Gegensatz zu manch anderen Verfahren diese für jeden Teilnehmer nur einmalig generiert werden müssen, was insbesondere in Anbetracht der relativ hohen Rechenintensität der Primzahlgenerierung wichtig ist. Auch die Möglichkeit der Signatur mit den gleichen wie zur Verschlüsselung genutzten Schlüsseln und Funktionen trägt zur großen Anerkennung bei. Wie bereits erwähnt basiert die Sicherheit auf dem \emph{Faktorisierungsproblem}. Da dieses Problem jedoch mit neuen Algorithmen und schnelleren Rechnern immer schneller zu lösen ist, sinkt die Sicherheit. Dieses Problem kann jedoch einfach mit längeren Schlüsseln gelöst werden, was allerdings zu höheren Ansprüchen von Rechenleistung bei der Benutzung mit sich bringt.\footcite[Vgl.][]{zum2020} So veröffentlichte \emph{Rivest} 1977 einen mit einer 129 Dezimalstellen langen Zahl $n$ verschlüsselte Text, für den er annahm, dass es 40 Quadrillionen Jahre benötige um diesen zu entschlüsseln. Bereits 1994 wurde er innerhalb von 8 Monaten geknackt.\footcite[Vgl.][73]{watjen2008} Zur Sicherheit durch dass \emph{Faktorisierungsproblem} gilt auch noch anzumerken, dass \enquote{Experten \emph{glauben}, dass es kein effizientes [...] Ver-
         fahren zur Faktorisierung gibt. Bewiesen ist dies jedoch \emph{nicht}.}\footcite[80]{ertel2003}
 
-    \subsection{praktische Anwendungen}
+    \section{praktische Anwendungen}
         Die meisten von uns kommen mit der RSA-Verschlüsselung mehrmals tagtäglich in Berührung, meist ohne es überhaupt zu bemerken. Denn sobald man eine Seite im Internet, deren URL mit \enquote{https} beginnt, nutzt man sie (Vgl. \cite{httpsblog}). Das \emph{HyperText Transfer Protocol (http)} existiert seit dem Beginn des Internets 1990, die Daten wurden hierbei jedoch als Klartext übertragen, weshalb 1994 das \emph{Hypertext Transfer Protocol Secure (https)} eingeführt wurde. Einem genauen Beobachter ist vielleicht schonmal am linken Rand der Adressleiste seines Browsers ein Symbol aufgefallen, welches je nach Verwendung von \emph{http} oder \emph{https} ein Schloss oder ein Warndreieck darstellt, denn nur bei \emph{https} sind die übertragenen Daten verschlüsselt. Verwendet wird hierfür das \emph{Transport Layer Security (TLS)} Protokoll, einer Mischung aus RSA und einem symmetrischen Verschlüsselungsverfahren, AES. Dabei erzeugt der Browser einen \emph{Session-Key} und übermittelt diesen, mit dem \emph{Public-Key} des Webservers verschlüsselt an ebendiesen. Sobald der Server den \emph{Session-Key} erhalten hat, findet der Datenaustausch durch \emph{AES} verschlüsselt statt, da dies wesentlich weniger Rechenleistung benötigt als wenn alles mit \emph{RSA} verschlüsselt werden würde.
         Für Nutzer, die sich selbst etwas stärker damit befassen wollen können sie mit Software wie \textbf{PGP} (Pretty-Good-Privacy) ihre eigenen Dateien oder auch mit dem kostenlosen Ableger \textbf{OpenPGP} ihre EMails verschlüsseln und signieren.\footcite[Vgl.][]{zotero-48}
         
@@ -308,4 +306,3 @@
     \include{./content/Schlusserklaerung}
 
 \end{document}
-% TODO Phi klein schreiben du Vollidiot
