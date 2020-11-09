@@ -1,0 +1,15 @@
+\begin{tikzpicture}[thick, auto]
+    \node (input){$M$};
+    \node[state, accepting, right=of input](encrypt){$s_A$};
+    \node[above=of encrypt]{privat};
+    \node[below=of encrypt]{Alice};
+    \node[state, right=3cm of encrypt](decrypt){$v_A$};
+    \node[above=of decrypt]{öffentlich};
+    \node[below=of decrypt]{Bob};
+    \node [right=of decrypt](output){$M$};
+
+    \path[->]
+        (encrypt) edge node {$SIG = s_A(M)$} (decrypt)
+        (input) edge (encrypt)
+        (decrypt) edge (output);
+\end{tikzpicture}

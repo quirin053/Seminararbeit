@@ -234,7 +234,6 @@
 
     \section{Digitale Signatur} %FIXME Kürzen
         Neben dem Verschlüsseln von Nachrichten wird das RSA-Verfahren auch häufig dazu verwendet um digitale Nachrichten zu signieren. Bei einer \emph{digitalen Signatur}, oft auch \emph{elektronische Unterschrift} \enquote{unterschreibt} ein Teilnehmer $A$ seine Nachricht oder Datei indem er eine nur ihm bekannten \emph{Signaturfunktion} $s_A$ auf diese anwendet (vgl. \cite[40-43]{beutelspacher2015}). Neben der geheimen Signaturfunktion besitzt jeder Teilnehmer auch noch eine \emph{Verifikationsfunktion} $v_A$, welche er öffentlich zugänglich macht oder zusätzlich mit einer signierten und einer unsignierten Version der Nachricht mitversendet. Mit dieser kann der Empfänger die signierte Nachricht entschlüsseln und falls sich der dechiffrierte Text mit dem unsignierten deckt, ist die Identität des Absenders bewiesen, da nur der Besitzer des privaten Schlüssel den Text so verschlüsseln konnte, dass der Chiffretext sich nach Anwendung der öffentlichen Verifikationsfunktion dem Klartext entspricht\footcite[vgl.][68]{watjen2008}.
-        % TODO Ablaufschema
         \begin{align}
             SIG &= s_A(M) \\
             v_A(SIG) &= M
@@ -247,6 +246,10 @@
         \begin{equation}
             M = v_A(SIG) = SIG^{e}\mod{n}
         \end{equation}
+        \begin{center}
+            \input{./content/sigflow.tex}\\
+            \emph{Veranschaulichung der Signatur\footcite[68]{watjen2008}}\\
+        \end{center}
         Da es aber unpraktikabel ist immer gesamte Dateien zu signieren, da es zu lange dauert und in zu großen Signaturdateien resultiert, wird in der realen Anwendung meist eine \emph{Hashfunktion} verwendet, welche einen kleinen \enquote{Fingerabdruck} der Datei erstellt und nur dieser wird signiert. Beim Verifizieren wird ebenfalls nur das Ergebnis der auf die Datei angewendeten Hashfunktion mit der Signatur durch die Verifikationsfunktion verglichen.
 
     \section{Mathematischer Beweis des Verfahrens}
