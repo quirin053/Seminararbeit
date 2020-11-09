@@ -32,8 +32,8 @@
     Die Verschlüsselung gehört zum Bereich der \emph{Kryptographie}, womit die \enquote{Wissenschaft vom geheimen Schreiben} \footcite[1]{watjen2008} gemeint ist.
 
     \subsubsection{Terminologie}
-    Aus diesem Wissenschaftsbereich stammen noch mehrere Begriffe ab, die im folgenden von Bedeutung sein werden:
-    % Begriffsklärungen %TODO Algorithmus? %TODO Buchstabenabkürzungen hinzufügen
+    Aus diesem Wissenschaftsbereich stammen noch mehrere Begriffe ab, die im folgenden von Bedeutung sein werden (vgl. \cite[17]{ertel2003}):
+    % Begriffsklärungen
     \begin{description}
         \item[Chiffre] Geheime Methode des Schreibens, also eine Form des Verschlüsselns
         \item[Klartext] Der unverschlüsselte Text
@@ -43,12 +43,11 @@
     \end{description}
 
     \subsection[Ziele]{Ziele der Kryptographie}
-    % TODO  Nach Moderne Verfahren der Kryptographie (natürlich mit citetitle o.ä)
-    % IDEA PIN-Persönliche Identifikationsnummer
+    Nach \cite[vgl.][16-21]{beutelspacher2015} hat die Kryptographie folgende Ziele:
     \subsubsection{Geheimhaltung}
-    Der wohl bekannteste und offensichtlichste Verwendungszweck der Verschlüsselung ist eine Nachricht geheim zu halten. Hierbei wird die zu übertragende Nachricht so entstellt, dass sie für jeden völlig unsinnig erscheint, außer für den beabsichtigten Empfänger, welcher den geeigneten Schlüssel besitzt, er ihm das Dechiffrieren ermöglicht.\footcite[17]{beutelspacher2015}
+    Der wohl bekannteste und offensichtlichste Verwendungszweck der Verschlüsselung ist eine Nachricht geheim zu halten. Hierbei wird die zu übertragende Nachricht so entstellt, dass sie für jeden völlig unsinnig erscheint, außer für den beabsichtigten Empfänger, welcher den geeigneten Schlüssel besitzt, er ihm das Dechiffrieren ermöglicht.
     \subsubsection{Authentikation}
-    Bei der Authentikation liegt das Ziel darin, die Echtheit einer Identität oder Nachricht zu überprüfen, da wir uns in der digitalen Welt nicht einfach durch unser Aussehen oder unsere Stimme ausweisen können und auch bei Nachrichten ist nicht zweifelsfrei Festzustellen von wem sie versendet hat und ob sie auf ihrem Weg verändert wurden. Zur \emph{Teilnehmerauthentikation} gehört unter anderem das eingeben der Geheimzahl am Geldautomaten, da nur der Besitzer der EC-Karte auch die dazu gehörige Nummer kennt und so seine Identität dem Geldautomaten nachweisen kann. Hier gilt das Prinzip:
+    Bei der Authentikation liegt das Ziel darin, die Echtheit einer Identität oder Nachricht zu überprüfen, da wir uns in der digitalen Welt nicht einfach durch unser Aussehen oder unsere Stimme ausweisen können und auch bei Nachrichten ist nicht zweifelsfrei Festzustellen von wem sie versendet hat und ob sie auf ihrem Weg verändert wurden. Zur \emph{Teilnehmerauthentikation} gehört unter anderem das eingeben der Geheimzahl (\emph{PIN} = Persönliche IdentifikationsNummer) am Geldautomaten, da nur der Besitzer der EC-Karte auch die dazu gehörige Nummer kennt und so seine Identität dem Geldautomaten nachweisen kann. Hier gilt das Prinzip:
     \begin{quote}
         Ich weise meine Identität dadurch nach, dass ich nachweise, etwas zu haben, was kein anderer hat.\footcite[19]{beutelspacher2015}
     \end{quote}
@@ -57,10 +56,10 @@
     Neben den beiden oben genannten Zielen für die die RSA-Verschlüsselung am häufigsten eingesetzt wird, gibt es auch noch weitere Ziele, die zwar weniger prominent sind, jedoch ähnliche Techniken nutzen. Bei dem Zeil der \emph{Anonymität} wird die Identität verborgen, was bei einer digitalen Geschäftsabwicklung mit dem Zahlen mit Bargeld verglichen werden kann, aber auch oft zum Schutz der Privatsphäre eingesetzt wird. Wie die RSA-Verschlüsselung basieren \emph{kryptographische Protokolle} größtenteils auf dem \emph{Public-Key-Verfahren}. Mit einem Protokoll wird hierbei die zum Datenaustausch nötige Abfolge von auszuführenden Schritten bezeichnet. Somit ist es durch vorher festgelegte Protokolle möglich, dass sich eine große Anzahl von Teilnehmern miteinander verschlüsselt verständigen können. Ein \emph{kryptografisches Protokoll} muss sich aber nicht auf den digitalen Nachrichtenaustausch beschränken, sondern auch schon das Bedienen eines Bankautomaten wird als solches bezeichnet.
 
     \subsection{Klassische Chiffren}
-    Die Verschlüsselung kann auf eine lange Entwicklungsgeschichte zurückblicken, und laut \textcite[28]{ertel2003} werden alle Verfahren, die bis etwa 1950 entwickelt und verwendet wurden als \emph{klassische Chiffren} bezeichnet. Diese Chiffren können in \emph{Transpositionschiffre} und \emph{Substitutionschiffre} unterteilt werden.    % FIXME mehr Zitationen?
+    Die Verschlüsselung kann auf eine lange Entwicklungsgeschichte zurückblicken, und laut \textcite[28]{ertel2003} werden alle Verfahren, die bis etwa 1950 entwickelt und verwendet wurden als \emph{klassische Chiffren} bezeichnet. Diese Chiffren können in \emph{Transpositionschiffre} und \emph{Substitutionschiffre} unterteilt werden.
      Bei einer \emph{Transpositionschiffre} wird die Anordnung der Zeichen im Chiffretext gegenüber dem Klartext verändert, die Zeichen an sich aber bleiben dabei gleich. Im Chiffretext einer \emph{Substitutionschiffre} dagegen bleibt die Position des Zeichens erhalten, jedoch wird das Zeichen an sich ersetzt. Diese lässt sich noch weiter \emph{monoalphabetische}, bei der ein Klartext-Zeichen im Chiffretext immer durch das gleiche Zeichen repräsentiert wird und \emph{polyalphabetische}, bei der sich das zugehörige Chiffretext-Zeichen abhängig vom Kontext verändert.
     \subsubsection{Caesar-Verschlüsselung}
-    Die nach ihrem berühmtesten Benutzer \person{Julius Caesar} benannte Chiffre ist zwar keine besonders sichere, aber zur Veranschaulichung gut geeignet. Diese Chiffre ist eine \emph{monoalphabetische Substitutionschiffre} und kann noch genauer den \emph{Verschiebechiffren} zugeordnet werden. Wie es durch den Namen bereits suggeriert wird, wird der Klartext durch Verschiebung seiner Zeichen chiffriert. Bei der Caesar-Verschlüsselung wird dies erreicht, indem jedes Zeichen mit dem Zeichen ersetzt wird, das an der Stelle im verwendeten Alphabet steht, die sich aus der Position des Klartext-Zeichens im Alphabet, summiert mit dem Schlüssel ergibt. Allgemein kann dies mit folgender Formel beschrieben werden:
+    Die nach ihrem berühmtesten Benutzer \person{Julius Caesar} benannte Chiffre ist zwar keine besonders sichere, aber zur Veranschaulichung gut geeignet (vgl. \cite[29]{ertel2003}). Diese Chiffre ist eine \emph{monoalphabetische Substitutionschiffre} und kann noch genauer den \emph{Verschiebechiffren} zugeordnet werden. Wie es durch den Namen bereits suggeriert wird, wird der Klartext durch Verschiebung seiner Zeichen chiffriert. Bei der Caesar-Verschlüsselung wird dies erreicht, indem jedes Zeichen mit dem Zeichen ersetzt wird, das an der Stelle im verwendeten Alphabet steht, die sich aus der Position des Klartext-Zeichens im Alphabet, summiert mit dem Schlüssel ergibt. Allgemein kann dies mit folgender Formel beschrieben werden:
     \begin{equation}
         z \mapsto (z+k) \bmod n
     \end{equation}
@@ -79,7 +78,7 @@
             VHPLQDUDUEHLW & KDOOR ZHOW & VFKXOH
         \end{tabular}
     \end{center}
-    Die Entschlüsselung erfolgt hier mit dem selben Schlüssel, der auch bei der Verschlüsselung verwendet wurde, indem die Buchstaben in entgegengesetzte Richtung verschoben werden. Diese Art der Verschlüsselung ist allerdings sehr unsicher, da sie mehrere Problemstellen aufweist:
+    Die Entschlüsselung erfolgt hier mit dem selben Schlüssel, der auch bei der Verschlüsselung verwendet wurde, indem die Buchstaben in entgegengesetzte Richtung verschoben werden. Diese Art der Verschlüsselung ist allerdings sehr unsicher, da sie mehrere Problemstellen aufweist (vgl. \cite[14]{watjen2008}):
     \begin{description}
         \item[Die Schlüsselübertragung] Verschlüsselung wird häufig benutzt, wenn damit gerechnet wird, dass die Kommunikation abgehört wird. Da aber um die verschlüsselte Kommunikation herzustellen zuerst der Schlüssel ausgetauscht werden muss, stellt sich hier die Frage, wie das erreicht werden kann, ohne dass der ungewollte Dritte davon Kenntnis nimmt.
         \item[Schlüsselmöglichkeiten] Es gibt hier nur eine sehr begrenzte Anzahl von Zahlen, die für $k$ eingesetzt werden können, und zwar $n-1$. Theoretisch können auch größere Zahlen eingesetzt werden, allerdings erzeugen sie aufgrund des Modulo keine neuen Chiffretexte. Durch diese begrenzten Variationen ist es möglich den Klartext zu ermitteln, indem alle möglichen Schlüssel durchprobiert werden.
