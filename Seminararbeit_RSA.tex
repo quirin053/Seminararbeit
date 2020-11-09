@@ -14,12 +14,10 @@
 
     \pagenumbering{gobble}
     \includepdf[pages=-]{./content/Deckblatt_Seminararbeit_2020_qm.pdf}
-    \maketitle
-    \newpage
     \tableofcontents
     \newpage
     \pagenumbering{arabic}
-    \setcounter{page}{4}
+    \setcounter{page}{3}
 
     \section{Einleitung}
     Bei der Betrachtung der Benennung der Epochen in der menschlichen Geschichte ist bemerkbar, dass hier mehrmals die bedeutendste technische Errungenschaft aus diesem Zeitraum zur Namensgebung verwendet wird. Das ist natürlich sinnvoll da diese Entwicklungen im großen Ausmaß das Leben der Menschen beeinflussten und auch für den weiteren Verlauf der Geschichte ausschlaggebend sind. Diese Namen sind  wie \enquote{Bronzezeit} recht selbsterklärend, hier wurde die Metallverarbeitung, vor allem mit Bronze erfunden und revolutionierte die Waffentechnik und ermöglichte auch viele andere neuartige Gegenstände.\footcite[vgl.][]{BronzezeitEuropaDeutschland} 
@@ -51,7 +49,7 @@
     \begin{quote}
         \enquote{Ich weise meine Identität dadurch nach, dass ich nachweise, etwas zu haben, was kein anderer hat.}\footcite[19]{beutelspacher2015}
     \end{quote}
-    Ähnlich funktioniert es bei der \emph{Nachrichtenauthentikation}: hier verknüpft der Ersteller sein \enquote{Geheimnis} mit dem Dokument um es authentisch zu machen. Im Falle des Bankautomaten, muss allerdings zusätzlich zum Kontoinhaber logischerweise auch der Bankautomat die Geheimnummer kennen. Es gibt aber auch sogenannte \emph{Signaturverfahren}, bei denen dies nicht notwendig ist.
+    Ähnlich funktioniert es bei der \emph{Nachrichtenauthentikation}: hier verknüpft der Ersteller sein \enquote{Geheimnis} mit dem Dokument um es authentisch zu machen. Im Falle des Bankautomaten, muss allerdings zusätzlich zum Kontoinhaber logischerweise auch der Bankautomat die Geheimnummer kennen. Es gibt aber auch  \emph{Signaturverfahren}, bei denen dies nicht notwendig ist.
     \subsubsection{weitere Ziele}
     Neben den beiden oben genannten Zielen für die die RSA-Verschlüsselung am häufigsten eingesetzt wird, gibt es auch noch weitere Ziele, die zwar weniger prominent sind, jedoch ähnliche Techniken nutzen. Bei dem Zeil der \emph{Anonymität} wird die Identität verborgen, was bei einer digitalen Geschäftsabwicklung mit dem Zahlen mit Bargeld verglichen werden kann, aber auch oft zum Schutz der Privatsphäre eingesetzt wird. Wie die RSA-Verschlüsselung basieren \emph{kryptographische Protokolle} größtenteils auf dem \emph{Public-Key-Verfahren}. Mit einem Protokoll wird hierbei die zum Datenaustausch nötige Abfolge von auszuführenden Schritten bezeichnet. Somit ist es durch vorher festgelegte Protokolle möglich, dass sich eine große Anzahl von Teilnehmern miteinander verschlüsselt verständigen können. Ein \emph{kryptografisches Protokoll} muss sich aber nicht auf den digitalen Nachrichtenaustausch beschränken, sondern auch schon das Bedienen eines Bankautomaten wird als solches bezeichnet.
 
@@ -85,14 +83,14 @@
         \item[Monoalphabetisch] Da es sich um eine \emph{monoalphabetische} Verschlüsselung handelt, kann der Schlüssel ermittelt werden, indem die statistische Verteilung der Buchstaben im Chiffretext mit dem durchschnittlichen Auftreten in der jeweiligen Sprache verglichen wird.
     \end{description}
 
-    \subsection{Symmetrie}  %FIXME Ziatation
+    \subsection{Symmetrie}
         Eine weitere wichtige Unterteilung der Verschlüsselungsformen ist die \emph{Symmetrie}. (vgl. \cite{ertel2003}[18]) Hier wird unterschieden, ob die Entschlüsselung mit dem gleichen Schlüssel wie die Verschlüsselung erfolgt, dies wird als \emph{symmetrisch} bezeichnet, oder ob für die Entschlüsselung ein separater Schlüssel verwendet werden muss (\emph{asymmetrisch}). Wenn nun $E$ die Verschlüsselung (encryption), $D$ die Entschlüsselung (decryption), $M$ den Klartext, $C$ den Chiffretext (ciphertext) und $K$ den Schlüssel (key) bezeichnet, gilt für einen \emph{symmetrischen Algorithmus}:
         \begin{align}
             E_K(M) &= C\\
             D_K(C) &= M\\
             D_K\left(E_K(M)\right) &= M
         \end{align}
-        Für einen \emph{asymmetrischen Algorithmus} gilt nahezu identisches, mit dem Unterschied, dass für die Verschlüsselung der Schlüssel $K_1$ und für die Entschlüsselung $K_2$ verwendet wird:    %FIXME Seitenumbruch
+        Für einen \emph{asymmetrischen Algorithmus} gilt nahezu identisches, mit dem Unterschied, dass für die Verschlüsselung der Schlüssel $K_1$ und für die Entschlüsselung $K_2$ verwendet wird:
         \begin{align}
             E_{K_1}(M) &= C \label{eq:funf} \\
             D_{K_2}(C) &= M \label{eq:sechs}    \\
@@ -126,10 +124,11 @@
             \input{./content/pkflow.tex}\\
             \emph{Veranschaulichung des Public-Key-Verfahrens\footcite[67]{watjen2008}}\\            
         \end{center}
-        Um die Geheimhaltung zu gewährleisten muss das eingesetzte Verfahren so konzipiert sein, dass von dem öffentlichen Schlüssel $P$ keine Rückschlüsse auf den privaten Schlüssel $S$ gezogen werden können.\footcite[33]{beutelspacher2015} %FIXME Seitenumbruch
+        % \newpage
+        Um die Geheimhaltung zu gewährleisten muss das eingesetzte Verfahren so konzipiert sein, dass von dem öffentlichen Schlüssel $P$ keine Rückschlüsse auf den privaten Schlüssel $S$ gezogen werden können.\footcite[33]{beutelspacher2015}
     
     \section{Entwicklung des RSA-Algorithmus}
-        Das bis heute wichtigste Public-Key-Kryptosystem\footcite[vgl.][26]{pieprzyk2010topics} \enquote{wurde 1978 von \emph{R. \textbf{R}ivest},\\ \emph{A. \textbf{S}hamir} und \emph{L. \textbf{A}dleman} erfunden, als sie zu zeigen versuchten, dass Public-Key-Kryptographie unmöglich sei.}\footcite[43]{beutelspacher2015} Dabei war \emph{Rivest} für die Entwicklung des Algorithmus und \emph{Shamir} für die Überprüfung auf Schwachstellen zuständig, während \emph{Adelman} auf beiden Seiten mitwirkte.\footcite[77]{ertel2003} Sie waren jedoch nicht die ersten, denn \enquote{Ende 1997 [wurde bekannt], dass \emph{Clifford Cocks} von den britischen Government Communications Headquarters (GCHQ) bereits 1975 dieselbe Idee hatte, sie aber strenger Geheimhaltung unterlag.}\footcite[71]{watjen2008}%FIXME Zeilenumbruch
+        Das bis heute wichtigste Public-Key-Kryptosystem\footcite[vgl.][26]{pieprzyk2010topics} \enquote{wurde 1978 von \emph{R. \textbf{R}ivest},\\ \emph{A. \textbf{S}hamir} und \emph{L. \textbf{A}dleman} erfunden, als sie zu zeigen versuchten, dass Public-Key-Kryptographie unmöglich sei.}\footcite[43]{beutelspacher2015} Dabei war \emph{Rivest} für die Entwicklung des Algorithmus und \emph{Shamir} für die Überprüfung auf Schwachstellen zuständig, während \emph{Adelman} auf beiden Seiten mitwirkte.\footcite[77]{ertel2003} Sie waren jedoch nicht die ersten, denn \enquote{Ende 1997 [wurde bekannt], dass \emph{Clifford Cocks} von den britischen Government Communications Headquarters (GCHQ) bereits 1975 dieselbe Idee hatte, sie aber strenger Geheimhaltung unterlag.}\footcite[71]{watjen2008}
     
     \section{Schlüsselerzeugung}
         Um die bei einem \emph{asymmetrischen Verschlüsselungsverfahren} nötigen beiden Schlüssel zu erzeugen müssen zuerst zwei unterschiedliche Primzahlen $p$ und $q$ erzeugt werden.(vgl. \cite[278]{dankmeier2006}) Aus diesen wird dann das Produkt $n=p\cdot q$, den \emph{Modul}, gebildet. Für die Funktionalität des Verfahrens spielt die größe der verwendeten Primzahlen keine Rolle, allerdings sinkt mit steigender Größe die Gefahr des \enquote{Aufbrechens} durch einen Unbefugten, da die Sicherheit der RSA-Verschlüsselung auf dem \emph{Faktorisierungsproblem} beruht. Dies ist \enquote{das bisher ungelöste Problem der schnellen Zerlegung großer Zahlen in ihre Primfaktoren, die Aufgabe hat eine exponentielle Komplexität.}\footcite[279]{dankmeier2006} Dadurch ist es bei den heute verwendten 100- bis 350-stelligen mit aktuellen Methoden und Rechenleistung nicht möglich aus $n$ die zugrundeliegenden Primzahlen $p$ und $q$ zu berechnen.
@@ -177,10 +176,11 @@
                 \label{fig:erweuklid}
             \end{figure}
             \footnotetext{\cite{erweA}}
+            \newpage
             \begin{equation}
                 2\cdot48-19\cdot5=1
             \end{equation}
-            lässt sich mit $\mod$ auch anders schreiben: %FIXME Seitenumbruch
+            lässt sich mit $\mod$ auch anders schreiben:
             \begin{equation}
                 -19\cdot5\mod{48}=1
             \end{equation}
@@ -198,7 +198,7 @@
                 \item[Der öffentliche Schlüssel ($P$)] besteht aus dem Paar $P=(e, n)$ und wird allen Personen, von denen der Besitzer Informationen erhalten will, zugänglich gemacht. Hier wird auch erkenntlich, weshalb es so wichtig ist, dass $n$ nicht leicht in seine Primfaktoren zerlegt werden kann, denn wenn es einem Angreifer gelingen sollte diese ausfindig zu machen könnte er damit den \emph{privaten Schlüssel} berechnen und alle (abgefangenen) Nachrichten zu entschlüsseln.
                 \item[Der geheime Schlüssel ($S$)] wetzt sich aus $S=(d, n)$ zusammen und sollte nur dem Besitzer bekannt sein. 
             \end{description}
-            Da die Schlüsselerzeugung meist von einer Schlüsselvergabestelle, wie z.B. dem Anbieter Sofortnachrichtendienstes, sollte dieser nach Berechnung der Schlüssel die Primzahlen $p$ und $q$, sowie das Ergebnis der zugehörigen Eulerfunktion $\varphi(n)$ löschen, damit auch im Falle einer Kompromittierung der Server dessen die Privatsphäre der Nutzer geschützt ist.\footcite[279]{dankmeier2006} %TODO Ablaufschema: Cryptool oder tikz
+            Da die Schlüsselerzeugung meist von einer Schlüsselvergabestelle übernommen wird, sollte diese nach Berechnung der Schlüssel die Primzahlen $p$ und $q$, sowie das Ergebnis der zugehörigen Eulerfunktion $\varphi(n)$ löschen, damit auch im Falle einer Kompromittierung ihrer Server die Privatsphäre der Nutzer geschützt bleibt.\footcite[279]{dankmeier2006}
 
     \section{Ver- und Entschlüsselungs Algorithmus}
             Möchte Bob nun eine chiffrierte Nachricht an Alice verschicken, muss er folgendermaßen vorgehen (vgl. \cite[71]{watjen2008}):
@@ -211,8 +211,8 @@
                     C = E(M) = M^{e}\mod{n} \label{eq:encryption}
                 \end{equation}
             \end{enumerate}
-            In Abbildung \ref{fig:encrypt} wird der Ablauf einer Verschlüsselung mit dem Programm \href{www.cryptool.org}{Cryptool 2} (www.cryptool.org) veranschaulicht. Aus Gründen der Übersichtlichkeit wurde hier anstelle der einzelnen Buchstaben der gesamte Text in eine Zahl umgewandelt und die Schlüsselgenerierung wurde dem Programm überlassen.
-            \begin{figure}[h]
+            In Abbildung \ref{fig:encrypt} wird der Ablauf einer Verschlüsselung mit dem Programm \href{www.cryptool.org}{Cryptool 2} (www.cryptool.org) an einem Beispiel veranschaulicht. Aus Gründen der Übersichtlichkeit wurde hier anstelle der einzelnen Buchstaben der gesamte Text in eine Zahl umgewandelt und die Schlüsselgenerierung wurde dem Programm überlassen.
+            \begin{figure}[h!]
                 \includegraphics[width=\linewidth]{content/cryptool_encrypt_e1.png}
                 \caption{Veranschaulichung des Verschlüsselungprozesses\protect\footnotemark}
                 \label{fig:encrypt}
@@ -223,16 +223,15 @@
             \begin{equation}
                 M = D(C) = C^{d}\mod{n} \label{eq:decrytion}
             \end{equation}
-            \begin{figure}[h]
+            \begin{figure}[h!]
                 \includegraphics[width=\linewidth]{content/cryptool_decrypt_e1.png}
                 \caption{Veranschaulichung des Entschlüsselungprozesses\protect\footnotemark}
                 \label{fig:decrypt}
             \end{figure}
             \footnotetext{erstellt vom Verfasser}
 
-    %TODO Beispiel
 
-    \section{Digitale Signatur} %FIXME Kürzen
+    \section{Digitale Signatur}
         Neben dem Verschlüsseln von Nachrichten wird das RSA-Verfahren auch häufig dazu verwendet um digitale Nachrichten zu signieren. Bei einer \emph{digitalen Signatur}, oft auch \emph{elektronische Unterschrift} \enquote{unterschreibt} ein Teilnehmer $A$ seine Nachricht oder Datei indem er eine nur ihm bekannten \emph{Signaturfunktion} $s_A$ auf diese anwendet (vgl. \cite[40-43]{beutelspacher2015}). Neben der geheimen Signaturfunktion besitzt jeder Teilnehmer auch noch eine \emph{Verifikationsfunktion} $v_A$, welche er öffentlich zugänglich macht oder zusätzlich mit einer signierten und einer unsignierten Version der Nachricht mitversendet. Mit dieser kann der Empfänger die signierte Nachricht entschlüsseln und falls sich der dechiffrierte Text mit dem unsignierten deckt, ist die Identität des Absenders bewiesen, da nur der Besitzer des privaten Schlüssel den Text so verschlüsseln konnte, dass der Chiffretext sich nach Anwendung der öffentlichen Verifikationsfunktion dem Klartext entspricht\footcite[vgl.][68]{watjen2008}.
         \begin{align}
             SIG &= s_A(M) \\
